@@ -1,0 +1,28 @@
+.menu-header {
+    height: 100%;
+    max-height: 500px !important;
+}
+
+.fcw {
+    color: #fff !important;
+}
+
+.menu-left-img {
+    right: 0;
+}
+
+.topBar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+}
+
+.v-navigation-drawer__content.app-drawer {
+    width: 100vw !important;
+}
+.v-navigation-drawer__content{
+    width: 100vw !important;
+background:  #0e0f3d;
+    color: #fff;
+}
+
