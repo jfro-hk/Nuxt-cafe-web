@@ -12,7 +12,13 @@
 
     <v-app v-else>
       <v-main>
-        <top-bar @sidebar="(val)=>{ drawer = !val}" class="position-fixed w-100" style="z-index: 2"/>
+        <v-dialog class="videoWrapper" width="auto" v-model="showVideo">
+
+          <template v-slot:default="{ isActive }">
+            <iframe id="youtube-video" height="315" src="https://www.youtube.com/embed/0uO0gLllYbM?si=weLaiYLkPLfhyIJ5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </template>
+        </v-dialog>
+        <top-bar :pages="pages" @sidebar="(val)=>{ drawer = !val}" class="position-fixed w-100" style="z-index: 2"/>
         <NuxtPage />
         <FooterSection/>
       </v-main>
@@ -46,6 +52,7 @@ export default {
   name: 'App',
   components: { FooterSection, TopBar },
   data: () => ({
+    showVideo:false,
     drawer: false,
     loading: false,
     pages: [
@@ -63,12 +70,20 @@ export default {
   watch: {
     '$route'(to, from) {
       this.loading = true;
+      this.drawer = false
     }
   },
   mounted() {
     setTimeout(() => {
       this.loading = true;
+      this.showVideo = true;
+      const iframe = document.getElementById('youtube-video');
+      if (iframe) {
+        const src = iframe.src;
+        iframe.src = src + '&autoplay=1';
+      }
     }, 3000);
   }
+
 }
 </script>

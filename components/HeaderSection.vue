@@ -1,14 +1,14 @@
 
 <template>
-  <div class="bg-secondary py-4 font text-primary container-space">
+  <div class="bg-secondary py-4 font container-space">
     <!-- Header -->
 <!--    <div>-->
 <!--      <TopBar></TopBar>-->
 <!--    </div>-->
 
     <!-- Section 1 -->
-    <v-row class="mt-16" :class="$vuetify.display.xs?'ma-5':''">
-      <v-col sm="12" md="6" cols="12" class="text-primary">
+    <v-row class="mt-16 font-c-primary" :class="$vuetify.display.xs?'ma-5':''">
+      <v-col sm="12" md="6" cols="12">
         <div class="heading mt-4">
           <div>Healthy Eating</div>
           <div>is important</div>
@@ -20,11 +20,11 @@
         <div>
           <v-img
             style="width: 40px; height: 562px"
-            src="/src/assets/Header_Scroll_Default.png"
+            src="/assets/Header_Scroll_Default.png"
           />
         </div>
       </v-col>
-      <v-col sm="12" md="6" cols="12" >
+      <v-col class="d-none d-md-block d-lg-block" sm="12" md="6" cols="12" >
         <v-img class="position: relative" style="height: 931px" src="/assets/header-img1.png" />
         <div class="header-image-position">
           <v-img src="/assets/Images.png" />
@@ -33,8 +33,8 @@
     </v-row>
 
     <!-- Section 2 -->
-    <v-row class="mt-14" :class="$vuetify.display.xs?'ma-5':''">
-      <v-col class="text-primary" cols="12" sm="12" md="6">
+    <v-row class="mt-14 font-c-primary" :class="$vuetify.display.xs?'ma-5':''">
+      <v-col cols="12" sm="12" md="6">
         <v-img src="/assets/Image.png" />
         <div class="heading-2 mt-8">
           <div>Start to plan</div>

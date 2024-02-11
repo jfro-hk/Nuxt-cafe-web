@@ -1,5 +1,5 @@
 <template>
-  <TopSection class="mt-16" cls="menu-header" img="/assets/gallery_2.png"/>
+  <TopSection class="mt-16" cls="menu-header" img="./assets/gallery_2.png"/>
   <div class="container-space font text-secondary pt-16 pb-16">
     <v-row>
       <v-col cols="12" sm="12" md="6">

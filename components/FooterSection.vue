@@ -1,11 +1,12 @@
 <script setup>
 import { ref } from "vue";
+import moment from "moment";
 
 const email = ref("");
 </script>
 
 <template>
-  <div class="bg-secondary font text-primary pt-16 pb-8">
+  <div class="bg-secondary font text-primary pt-16 pb-8 font-c-primary">
     <div
       class="container-space"
       :class="$vuetify.display.sm || $vuetify.display.xs ? 'text-center' : ''"
@@ -42,7 +43,7 @@ const email = ref("");
                 hide-details
               ></v-text-field>
               <div class="pl-2">
-                <v-btn block class="text-none py-7" color="primary" variant="flat">
+                <v-btn block class="text-none py-7 font-c-secondary" color="primary" variant="flat">
                   Subscribe
                 </v-btn>
               </div>
@@ -58,7 +59,7 @@ const email = ref("");
     <!-- <div class="container-space mt-8 d-flex justify-space-between"> -->
     <div class="container-space ">
       <v-row class="mt-8">
-        <v-col class="text-caption">© 2020 Café Apostrof Inc. All rights Reserved</v-col>
+        <v-col class="text-caption">© {{ moment(new Date).format('YYYY') }} Café Apostrof Inc. All rights Reserved</v-col>
         <v-col class="d-flex">
           <div>
             <v-btn

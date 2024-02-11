@@ -14,8 +14,9 @@ defineProps({
     <div class="mt-16">
       <div class="d-flex flex-column ga-2 align-start mt-5 ml-4">
         <div class="heading fcw mt-13">
-          View Our <br>
-          New Menu
+          Get in Touch
+<!--          View Our <br>-->
+<!--          New Menu-->
         </div>
         <span class="fcw">The freshest ingredients for you every day</span>
       </div>
