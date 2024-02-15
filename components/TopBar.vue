@@ -13,8 +13,10 @@ defineProps({
 <!--{{img}}-->
 <!--  </v-card>-->
 <!--  <div class="topBar">-->
+
   <div v-if="$vuetify.display.xs" class="d-flex justify-space-between topBar pa-7" :class="img">
     <div>
+
       <v-avatar color="primary" size="50">
         <img src="/assets/Café.png" alt="logo" width="30px" />
       </v-avatar>
@@ -27,8 +29,8 @@ defineProps({
       </v-btn>
     </div>
     <div class="text-center">
-      <div class="text-primary d-none" :class="$vuetify.display.xs ? 'text-caption' : ''">+86 852 346 000</div>
-      <v-btn class="mt-1" color="#FFE8D0" variant="outlined" :class="$vuetify.display.xs ? 'text-caption' : ''">Reservations</v-btn>
+      <div class="text-primary d-none" :class="$vuetify.display.xs ? 'text-caption' : ''">+45 54 55 66 37</div>
+      <v-btn style="border-radius: unset;" class="mt-1" color="#FFE8D0" variant="outlined" :class="$vuetify.display.xs ? 'text-caption' : ''">Reservations</v-btn>
     </div>
   </div>
   <div v-else class="d-flex justify-space-between font-c-primary" :class="img">
@@ -50,7 +52,7 @@ defineProps({
      </div>
     <div class="mt-2 mr-11">
       <span>+86 852 346 000</span>
-      <v-btn class="ml-4 text-none" color="#FFE8D0" variant="outlined">Reservations</v-btn>
+      <v-btn class="ml-4 text-none" size="large" style="border-radius: unset;" color="#FFE8D0" variant="outlined">Reservations</v-btn>
     </div>
     </div>
   </div>

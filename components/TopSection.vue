@@ -20,6 +20,8 @@ defineProps({
         </div>
         <span class="fcw">The freshest ingredients for you every day</span>
       </div>
+<!--      <div class="d-flex">-->
+<!--      </div>-->
       <!--          <v-img-->
       <!--            style="width:100vw"-->
       <!--            :src="img"-->
