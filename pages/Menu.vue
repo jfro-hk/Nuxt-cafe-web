@@ -9,7 +9,7 @@
       <span class="heading-3">{{ tabName }}</span>
 <!--    </v-col>-->
 <!--      <v-col>-->
-        <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="center" @change="handleTabChange">
+        <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="center" >
           <v-tab v-for="tabItem in tabs" :key="tabItem.value" :value="tabItem.value">{{ tabItem.name }}</v-tab>
         </v-tabs>
 <!--      </v-col>-->

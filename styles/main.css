@@ -29,6 +29,8 @@
   top: 578px;
   right: 685px;
 }
+
+
 .bg-secondary{
   background-color: #0e0f3d !important;
 }
@@ -128,6 +130,7 @@
 @media only screen and (min-width: 251px) and (max-width: 599px) {
   .menu-con-top{
     padding: 0px 50px;
+    flex-direction: column !important;
   }
   .heading {
       font-size: 50px;
@@ -432,47 +435,58 @@
   .videoWrapper iframe{
     width: 1000px;
   }
+  .citron{
+    right: 0;
+    position: relative !important;
+    left: 19px;
+    /* position: relative !important; */
+    top: 472px;
+}
+.citron svg{
+width: 212px !important;
+
+}
 }
 @media(max-width: 1050px){
-  .videoWrapper iframe{
-    width: 900px;
-  }
+.videoWrapper iframe{
+width: 900px;
+}
 }
 @media(max-width: 950px){
-  .videoWrapper iframe{
-    width: 800px;
-  }
+.videoWrapper iframe{
+width: 800px;
+}
 }
 @media(max-width: 850px){
-  .videoWrapper iframe{
-    width: 700px;
+.videoWrapper iframe{
+width: 700px;
 
-  }
+}
 }
 @media(max-width: 750px){
-  .videoWrapper iframe{
-    width: 600px;
-  }
+.videoWrapper iframe{
+width: 600px;
+}
 }
 @media(max-width: 650px){
-  .videoWrapper iframe{
-    width: 500px;
-  }
+.videoWrapper iframe{
+width: 500px;
+}
 }
 @media(max-width: 550px){
-  .videoWrapper iframe{
-    width: 400px;
-  }
+.videoWrapper iframe{
+width: 400px;
+}
 }
 @media(max-width: 450px){
-  .videoWrapper iframe{
-    width: 350px;
-    height: 200px !important;
-  }
+.videoWrapper iframe{
+width: 350px;
+height: 200px !important;
+}
 }
 @media(max-width: 400px){
-  .videoWrapper iframe{
-    width: 300px;
-    height: 200px !important;
-  }
+.videoWrapper iframe{
+width: 300px;
+height: 200px !important;
+}
 }

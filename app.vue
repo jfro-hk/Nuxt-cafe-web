@@ -22,12 +22,13 @@
                     allowfullscreen></iframe>
           </template>
         </v-dialog>
-        <div class="bg-primary d-flex align-center font-c-secondary justify-space-between position-fixed heading-6 w-100 pr-4 pl-4 pb-4" style="z-index: 2">
-          <span>Kontakt os ang. selskaber på <a href="tel:54 55 66 37" class="text-decoration-none mr-2">54 55 66 37</a></span>
-           <span> tirsdag - fredag mellem kl. 11.30 - 15.30</span>
+<!--        <div class="bg-primary d-flex align-center font-c-secondary justify-end position-fixed heading-6 w-100 pr-4 pl-4 pb-4" style="z-index: 2">-->
+<!--          <span>Ring til os? <a href="tel:00 45 54 55 66 37" class="text-decoration-none mr-2">00 45 54 55 66 37</a></span>-->
+<!--          <span>Eller på mail <a href="mailto:kontakt@cafeapostrof.dk" class="text-decoration-none mr-2">kontakt@cafeapostrof.dk</a></span>-->
 
-        </div>
-        <top-bar :pages="pages" @sidebar="(val)=>{ drawer = !val}" class="position-fixed w-100 mt-10 mt-lg-7 mt-md-7" style="z-index: 2"/>
+<!--        </div>-->
+<!--        mt-10 mt-lg-7 mt-md-7-->
+        <top-bar :pages="pages" @sidebar="(val)=>{ drawer = !val}" class="position-fixed w-100 " style="z-index: 2"/>
         <NuxtPage class="mt-16"/>
         <FooterSection/>
       </v-main>

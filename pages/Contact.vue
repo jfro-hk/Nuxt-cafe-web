@@ -2,7 +2,7 @@
   <TopSection class="mt-16" cls="menu-header" img="https://i.postimg.cc/wBqx8bxm/get-in-touch.png"/>
   <div class="container-space font text-secondary pt-16 pb-16 text-center mt-16">
     <v-row>
-      <v-col>
+      <v-col cols="12" md="6" lg="6">
         <div>
           <div class="citron position-absolute">
             <svg xmlns="http://www.w3.org/2000/svg" width="448" height="394" viewBox="0 0 448 394" fill="none">
@@ -14,26 +14,31 @@
           <v-img src="https://i.postimg.cc/4N3kccsQ/tables.jpg" max-width="500"></v-img>
         </div>
       </v-col>
-      <v-col>
+      <v-col cols="12" md="6" lg="6">
         <div class="d-flex justify-end">
           <div class="d-flex flex-column align-start heading-5">
             <span> We can be contacted via</span>
-            <span>Email <a href="mailto:kontakt@cafeapostrof.dk" class="text-decoration-none"><span class="text-blue-grey-lighten-1">kontakt@cafeapostrof.dk</span></a></span>
+            <span>Email <a href="mailto:kontakt@cafeapostrof.dk" class="text-decoration-none"><span
+                class="text-blue-grey-lighten-1">kontakt@cafeapostrof.dk</span></a></span>
             <span>or telephone on <span class="text-blue-grey-lighten-1">+86 852 346 000</span></span>
           </div>
         </div>
       </v-col>
     </v-row>
     <v-row>
-      <v-col>
+      <v-col cols="12" md="6" lg="6">
         <div class="d-flex flex-column align-center heading-5">
           <div class="d-flex align-center flex-column mt-16 ga-16">
             <span>We are located in  Havnegade 2A 5800 Nyborg</span>
-            <v-btn variant="flat" color="#0e0f3d">View in maps</v-btn>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2270.7571850729773!2d10.790115776716336!3d55.30986287292352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464d3ee5eb0da567%3A0xf8ee8a1323aace4b!2sHavnegade%202A%2C%205800%20Nyborg%2C%20Denmark!5e0!3m2!1sen!2snl!4v1708013686463!5m2!1sen!2snl"
+                width="600" height="450" style="border:0; width: 100%" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <v-btn variant="flat" @click="redirectToMaps" color="#0e0f3d">View in maps</v-btn>
           </div>
         </div>
       </v-col>
-      <v-col>
+      <v-col cols="12" md="6" lg="6">
         <div class="d-flex justify-end">
           <v-img src="https://i.postimg.cc/Pf7kXf8q/ap-house.jpg" max-width="500"></v-img>
         </div>
@@ -48,7 +53,7 @@
         <div class="text-grey-darken-1">Get in touch with restaurant</div>
       </div>
     </div>
-    <div class="mt-10" :class="$vuetify.display.xs?'ma-10':''">
+    <div class="mt-md-10 mt-lg-10">
       <v-form>
         <v-container>
           <v-row>
@@ -93,6 +98,9 @@ const form = ref({
   time: "6:00 pm",
   persion: "2 Person",
 });
+ function redirectToMaps() {
+   window.open('https://maps.app.goo.gl/2r1wuoLABjvGmg9Z6', '_blank');
+  }
 
 const formatedDate = () => {
   return moment(form.value.date).format('DD/MM/YYYY');
