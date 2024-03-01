@@ -2,11 +2,11 @@
   <div>
     <div>
       <HeaderSection />
-      <MenuSection :class="$vuetify.display.xs ? 'ma-10' : ''"/>
+      <MenuSection :menus="menus" :categories="categories" :class="$vuetify.display.xs ? 'ma-10' : ''"/>
       <CookSection />
       <ItemSection class="mt-10" :class="$vuetify.display.xs ? 'ma-10' : ''"/>
       <FashionSection :class="$vuetify.display.xs ? 'ma-10' : ''"/>
-      <ReservationSection />
+      <ReservationSection id="reservation" :opening-times="openingTimes" />
       <CalorieSection :class="$vuetify.display.xs ? 'ma-10' : ''"/>
     </div>
   </div>
@@ -20,4 +20,9 @@ import ItemSection from "@/components/ItemSection.vue";
 import FashionSection from "@/components/FashionSection.vue";
 import ReservationSection from "@/components/ReservationSection.vue";
 import CalorieSection from "@/components/CalorieSection.vue";
+defineProps({
+  menus:Object,
+  categories:Object,
+  openingTimes:Array,
+})
 </script>

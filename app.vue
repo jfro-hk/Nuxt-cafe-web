@@ -14,22 +14,27 @@
       <v-main>
 
         <v-dialog class="videoWrapper" width="auto" v-model="showVideo">
-
           <template v-slot:default="{ isActive }">
-            <iframe id="youtube-video" height="315" src="https://www.youtube.com/embed/0uO0gLllYbM?si=weLaiYLkPLfhyIJ5"
+            <v-btn style="position: absolute; right: 0;top: -50px" icon variant="text" rounded @click="showVideo = !showVideo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 28 28" fill="none">
+                <path d="M2 26L14 14M14 14L26 2M14 14L2 2M14 14L26 26" stroke="#0e0f3d" stroke-width="4"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </v-btn>
+            <iframe id="youtube-video" height="315" :src="settings.data.video"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
           </template>
         </v-dialog>
-<!--        <div class="bg-primary d-flex align-center font-c-secondary justify-end position-fixed heading-6 w-100 pr-4 pl-4 pb-4" style="z-index: 2">-->
-<!--          <span>Ring til os? <a href="tel:00 45 54 55 66 37" class="text-decoration-none mr-2">00 45 54 55 66 37</a></span>-->
-<!--          <span>Eller på mail <a href="mailto:kontakt@cafeapostrof.dk" class="text-decoration-none mr-2">kontakt@cafeapostrof.dk</a></span>-->
+        <!--        <div class="bg-primary d-flex align-center font-c-secondary justify-end position-fixed heading-6 w-100 pr-4 pl-4 pb-4" style="z-index: 2">-->
+        <!--          <span>Ring til os? <a href="tel:00 45 54 55 66 37" class="text-decoration-none mr-2">00 45 54 55 66 37</a></span>-->
+        <!--          <span>Eller på mail <a href="mailto:kontakt@cafeapostrof.dk" class="text-decoration-none mr-2">kontakt@cafeapostrof.dk</a></span>-->
 
-<!--        </div>-->
-<!--        mt-10 mt-lg-7 mt-md-7-->
+        <!--        </div>-->
+        <!--        mt-10 mt-lg-7 mt-md-7-->
         <top-bar :pages="pages" @sidebar="(val)=>{ drawer = !val}" class="position-fixed w-100 " style="z-index: 2"/>
-        <NuxtPage class="mt-16"/>
+        <NuxtPage :opening-times="settings.data" :menus="menus.data" :categories="categories.data" class="mt-16"/>
         <FooterSection/>
       </v-main>
 
@@ -47,6 +52,7 @@
           </v-btn>
 
           <!-- List of pages -->
+
           <v-list class="d-flex justify-center flex-column align-center mt-16">
             <v-list-item v-for="(item, index) in pages" :key="index" @click="navigateTo(item.route)">
               <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -61,6 +67,7 @@
 <script>
 import TopBar from "@/components/TopBar.vue";
 import FooterSection from "@/components/FooterSection.vue";
+import {useFetch} from "nuxt/app";
 
 export default {
   name: 'App',
@@ -69,6 +76,9 @@ export default {
     showVideo: false,
     drawer: false,
     loading: false,
+    categories: [],
+    menus: [],
+    settings: [],
     pages: [
       {title: 'Home', icon: 'mdi-view-dashboard', route: '/'},
       {title: 'Menu', icon: 'mdi-account', route: '/menu'},
@@ -77,6 +87,13 @@ export default {
     ]
   }),
   methods: {
+    async getSettings() {
+      this.settings = await useFetch('http://localhost:8000/api/get-settings/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK')
+    },
+    async getMenus() {
+          this.menus = await useFetch('http://localhost:8000/api/get-menu/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK');
+          this.categories = await useFetch('http://localhost:8000/api/get-categories/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK');
+    },
     navigateTo(route) {
       console.log('Navigating to:', route);
       this.$router.push(route);
@@ -89,6 +106,8 @@ export default {
     }
   },
   mounted() {
+    this.getMenus()
+    this.getSettings()
     setTimeout(() => {
       this.loading = true;
       this.showVideo = true;

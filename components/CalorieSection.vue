@@ -100,49 +100,49 @@ const selectedReview = ref(0)
           />
         </div>
       </div>
-      <v-row class="mt-8">
-        <v-col cols="12" sm="6" class="d-flex">
-          <div>
-            <v-avatar size="120">
-              <v-img src="/assets/Avatar (2).png" />
-            </v-avatar>
-          </div>
-          <div class="text-secondary pl-6 pt-6">
-            <div class="heading-6">Jhon Doe</div>
-            <div class="text-left mt-2">Bloger</div>
-          </div>
-        </v-col>
-        <v-col
-          cols="12"
-          sm="6"
-          class="pt-8 d-flex"
-          :class="$vuetify.display.xs ? 'justify-center' : 'justify-end'"
-        >
-          <div>
-            <v-btn
-              block
-              class="text-none"
-              color="#0E0F3D"
-              variant="icon"
-              icon="mdi-arrow-left"
-              :disabled="selectedReview===0"
-              @click="selectedReview= selectedReview-1"
-            />
-          </div>
-          <div class="heading-6 pt-1 px-2">{{ selectedReview+1 }}/{{ reviews.length }}</div>
-          <div>
-            <v-btn
-              block
-              class="text-none"
-              color="#0E0F3D"
-              variant="icon"
-              icon="mdi-arrow-right"
-              :disabled="selectedReview=== reviews.length-1"
-              @click="selectedReview= selectedReview+1"
-            />
-          </div>
-        </v-col>
-      </v-row>
+<!--      <v-row class="mt-8">-->
+<!--        <v-col cols="12" sm="6" class="d-flex">-->
+<!--          <div>-->
+<!--            <v-avatar size="120">-->
+<!--              <v-img src="/assets/Avatar (2).png" />-->
+<!--            </v-avatar>-->
+<!--          </div>-->
+<!--          <div class="text-secondary pl-6 pt-6">-->
+<!--            <div class="heading-6">Jhon Doe</div>-->
+<!--            <div class="text-left mt-2">Bloger</div>-->
+<!--          </div>-->
+<!--        </v-col>-->
+<!--        <v-col-->
+<!--          cols="12"-->
+<!--          sm="6"-->
+<!--          class="pt-8 d-flex"-->
+<!--          :class="$vuetify.display.xs ? 'justify-center' : 'justify-end'"-->
+<!--        >-->
+<!--          <div>-->
+<!--            <v-btn-->
+<!--              block-->
+<!--              class="text-none"-->
+<!--              color="#0E0F3D"-->
+<!--              variant="icon"-->
+<!--              icon="mdi-arrow-left"-->
+<!--              :disabled="selectedReview===0"-->
+<!--              @click="selectedReview= selectedReview-1"-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="heading-6 pt-1 px-2">{{ selectedReview+1 }}/{{ reviews.length }}</div>-->
+<!--          <div>-->
+<!--            <v-btn-->
+<!--              block-->
+<!--              class="text-none"-->
+<!--              color="#0E0F3D"-->
+<!--              variant="icon"-->
+<!--              icon="mdi-arrow-right"-->
+<!--              :disabled="selectedReview=== reviews.length-1"-->
+<!--              @click="selectedReview= selectedReview+1"-->
+<!--            />-->
+<!--          </div>-->
+<!--        </v-col>-->
+<!--      </v-row>-->
     </div>
   </div>
 </template>

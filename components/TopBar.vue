@@ -30,7 +30,7 @@ defineProps({
     </div>
     <div class="text-center">
       <div class="text-primary d-none" :class="$vuetify.display.xs || $vuetify.display.sm ? 'text-caption' : ''"><span><a href="tel:00 45 54 55 66 37" class="text-decoration-none mr-2 text-blue-grey-lighten-1">00 45 54 55 66 37</a></span></div>
-      <v-btn style="border-radius: unset;" class="mt-1" color="#FFE8D0" variant="outlined" :class="$vuetify.display.xs || $vuetify.display.sm ? 'text-caption' : ''">Reservations</v-btn>
+      <v-btn style="border-radius: unset;" class="mt-1" color="#FFE8D0" variant="outlined" :class="$vuetify.display.xs || $vuetify.display.sm ? 'text-caption' : ''" @click="$router.push('/#reservation')">Reservations</v-btn>
     </div>
   </div>
   <div v-else class="d-flex justify-space-between font-c-primary" :class="img">
@@ -52,7 +52,7 @@ defineProps({
      </div>
     <div class="mt-2 mr-11">
       <span>Ring til os? <a href="tel:00 45 54 55 66 37" class="text-decoration-none mr-2 text-blue-grey-lighten-1">00 45 54 55 66 37</a></span>
-      <v-btn class="ml-4 text-none" size="large" style="border-radius: unset;" color="#FFE8D0" variant="outlined">Reservations</v-btn>
+      <v-btn class="ml-4 text-none" size="large" style="border-radius: unset;" color="#FFE8D0" variant="outlined" @click="$router.push('/#reservation')">Reservations</v-btn>
     </div>
     </div>
   </div>

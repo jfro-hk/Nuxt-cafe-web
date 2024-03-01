@@ -1,5 +1,5 @@
 <template>
-  <TopSection class="mt-16" cls="menu-header" img="https://i.postimg.cc/wBqx8bxm/get-in-touch.png"/>
+  <TopSection class="mt-16" cls="menu-header" title="Get in Touch" img="https://i.postimg.cc/wBqx8bxm/get-in-touch.png"/>
   <div class="container-space font text-secondary pt-16 pb-16 text-center mt-16">
     <v-row>
       <v-col cols="12" md="6" lg="6">
@@ -20,7 +20,7 @@
             <span> We can be contacted via</span>
             <span>Email <a href="mailto:kontakt@cafeapostrof.dk" class="text-decoration-none"><span
                 class="text-blue-grey-lighten-1">kontakt@cafeapostrof.dk</span></a></span>
-            <span>or telephone on <span class="text-blue-grey-lighten-1">+86 852 346 000</span></span>
+            <span>or telephone on <a href="tel:00 45 54 55 66 37" class="text-decoration-none"><span class="text-blue-grey-lighten-1">+45 54 55 66 37</span></a></span>
           </div>
         </div>
       </v-col>

@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+defineProps({
+  menus:Object
+})
+</script>
 
 <template>
   <div class="container-space font text-secondary pb-16">
@@ -9,45 +13,19 @@
         <div>This is a section of your menu. Give your section</div>
         <div>a brief description</div>
       </div>
-      <v-row style="margin-top: 180px">
-        <v-col cols="12" md="6" sm="6">
-          <div class="text-right heading-5" style="border-bottom: 2px dotted">$20</div>
-          <div class="mt-4">
-            <div class="heading-4">
-              <div>Deep Sea Snow White</div>
-              <div>Cod Fillet</div>
+      <v-row style="margin-top: 170px">
+          <v-col cols="12" md="6" sm="6" v-for="(menuGroup, index) in menus.slice(0, 4)" :key="index" >
+            <!--            <div>{{ menuGroup.dish_title }}</div>-->
+            <div class="text-right heading-5" style="border-bottom: 2px dotted">
+              ${{ menuGroup.price }}
             </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-          </div>
-        </v-col>
-        <v-col cols="12" md="6" sm="6">
-          <div class="text-right heading-5" style="border-bottom: 2px dotted">$22</div>
-          <div class="mt-4">
-            <div class="heading-4">
-              <div>Steak With Rosemary</div>
-              <div>Butter</div>
+            <div class="mt-4">
+              <div class="heading-4">
+                <div>{{ menuGroup.dish_title }}</div>
+              </div>
+              <div>{{ menuGroup.description_title }}</div>
             </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-          </div>
-        </v-col>
-        <v-col cols="12" md="6" sm="6">
-          <div class="text-right heading-5" style="border-bottom: 2px dotted">$18</div>
-          <div class="mt-4">
-            <div class="heading-4">
-              <div>Cucumber Salad</div>
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-          </div>
-        </v-col>
-        <v-col cols="12" md="6" sm="6">
-          <div class="text-right heading-5" style="border-bottom: 2px dotted">$90</div>
-          <div class="mt-4">
-            <div class="heading-4">
-              <div>Natural Wine Pairing</div>
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-          </div>
-        </v-col>
+          </v-col>
       </v-row>
     </div>
   </div>

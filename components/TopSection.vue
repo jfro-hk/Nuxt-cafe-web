@@ -2,6 +2,7 @@
 defineProps({
   img: String,
   cls: String,
+  title:String
 })
 </script>
 
@@ -14,7 +15,7 @@ defineProps({
     <div class="mt-16">
       <div class="d-flex flex-column ga-2 align-start mt-5 ml-4">
         <div class="heading fcw mt-13">
-          Get in Touch
+          {{title}}
 <!--          View Our <br>-->
 <!--          New Menu-->
         </div>

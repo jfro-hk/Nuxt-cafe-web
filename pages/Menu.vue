@@ -1,63 +1,84 @@
 <template>
-  <!--  <v-container>-->
-  <TopSection class="mt-16" cls="menu-header" img="/assets/menu.png"/>
-  <!--    <MenuSection/>-->
+  <TopSection class="mt-16" title="Our Menu" cls="menu-header" img="/assets/menu.png"/>
   <v-card class="mb-16" elevation="0">
     <div class="d-flex justify-space-between align-center menu-con-top">
-<!--    <v-row>-->
-<!--    <v-col>-->
       <span class="heading-3">{{ tabName }}</span>
-<!--    </v-col>-->
-<!--      <v-col>-->
-        <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="center" >
-          <v-tab v-for="tabItem in tabs" :key="tabItem.value" :value="tabItem.value">{{ tabItem.name }}</v-tab>
-        </v-tabs>
-<!--      </v-col>-->
-<!--    </v-row>-->
+      <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="center">
+        <v-tab v-for="tabItem in categories" :key="tabItem.id" :value="tabItem.id">{{ tabItem.name }}</v-tab>
+      </v-tabs>
     </div>
-    <v-window v-model="tab" retain-focus>
-      <v-window-item v-for="n in 3" :key="n" :value="n">
-        <v-container fluid>
-          <v-row class="justify-center mt-16">
-            <v-col v-for="i in 6" :key="i" cols="12" md="5">
-              <div class="text-right heading-5" style="border-bottom: 2px dotted">$20</div>
-              <div class="mt-4">
-                <div class="heading-4">
-                  <div>Deep Sea Snow White</div>
-                  <div>Cod Fillet</div>
-                </div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+    <div>
+      <v-row class="justify-center mt-16">
+        <template v-for="(menuGroup, index) in menus" :key="index" >
+        <v-col cols="12" md="5" v-if="menuGroup.category_id == tab">
+<!--            <div>{{ menuGroup.dish_title }}</div>-->
+            <div class="text-right heading-5" style="border-bottom: 2px dotted">
+              ${{ menuGroup.price }}
+            </div>
+            <div class="mt-4">
+              <div class="heading-4">
+                <div>{{ menuGroup.dish_title }}</div>
               </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-window-item>
-    </v-window>
+              <div>{{ menuGroup.description_title }}</div>
+            </div>
+        </v-col>
+        </template>
+<!--        <v-col v-if="!menuGroup.category_id">-->
+<!--          <h1 class="heading-1">There are no dishes </h1>-->
+<!--        </v-col>-->
+      </v-row>
+    </div>
+    <!--      </v-window>-->
+    <!--    <v-window  v-model="onboarding" show-arrows>-->
+    <!--      <v-window-item v-for="(menuGroup, index) in menus.data" :key="index">-->
+    <!--        <v-container fluid v-if="menuGroup.category_id == tab">-->
+
+    <!--          <v-row class="justify-center mt-16">-->
+
+    <!--            <v-col cols="12" md="5">-->
+    <!--              <div class="text-right heading-5" style="border-bottom: 2px dotted">-->
+    <!--                ${{ menuGroup.price }}-->
+    <!--              </div>-->
+    <!--              <div  class="mt-4">-->
+    <!--                <div class="heading-4">-->
+    <!--                  <div>{{ menuGroup.dish_title }}</div>-->
+    <!--&lt;!&ndash;                  <div>Cod Fillet</div> &lt;!&ndash; Assuming this is a static text &ndash;&gt;&ndash;&gt;-->
+    <!--                </div>-->
+    <!--                <div>{{ menuGroup.description_title }}</div>-->
+    <!--              </div>-->
+    <!--            </v-col>-->
+    <!--          </v-row>-->
+    <!--        </v-container>-->
+    <!--      </v-window-item>-->
+    <!--    </v-window>-->
   </v-card>
-  <!--  </v-container>-->
 </template>
 <script>
-
 import TopSection from "@/components/TopSection.vue";
-import FashionSection from "@/components/FashionSection.vue";
+import {useFetch} from "nuxt/app";
+
 export default {
-  components: {FashionSection, TopSection },
-  data: () => ({
-    tab: null,
-    tabName: 'Your Tab Name',
-    tabs: [
-      { value: 1, name: 'Starter' },
-      { value: 2, name: 'Dessert' },
-      { value: 3, name: 'Breakfast' },
-    ],
-  }),
-  watch: {
-    tab(newTab) {
-      const selectedTab = this.tabs.find(tab => tab.value === newTab);
-      this.tabName = selectedTab ? selectedTab.name : 'Menu';
-    },
+  layout: 'menu',
+  components: {TopSection},
+  props:{
+    menus:Object,
+    categories:Object,
   },
+  data() {
+    return {
+      onboarding: null,
+      tab: null,
+      tabName: 1,
+    };
+  },
+  async mounted() {
+
+  },
+  computed: {
+    tabName() {
+      const selectedTab = this.categories.find(tab => tab.id === this.tab);
+      return selectedTab ? selectedTab.name : 'Menu';
+    }
+  }
 };
-
-
 </script>
