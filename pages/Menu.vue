@@ -2,7 +2,7 @@
   <TopSection class="mt-16" title="Our Menu" cls="menu-header" img="/assets/menu.png"/>
   <v-card class="mb-16" elevation="0">
     <div class="d-flex justify-space-between align-center menu-con-top">
-      <span class="heading-3">{{ tabName }}</span>
+      <span class="heading-3 text-capitalize">{{ tabName }}</span>
       <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="center">
         <v-tab v-for="tabItem in categories" :key="tabItem.id" :value="tabItem.id">{{ tabItem.name }}</v-tab>
       </v-tabs>
@@ -55,7 +55,6 @@
 </template>
 <script>
 import TopSection from "@/components/TopSection.vue";
-import {useFetch} from "nuxt/app";
 
 export default {
   layout: 'menu',

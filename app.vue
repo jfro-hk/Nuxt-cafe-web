@@ -88,11 +88,11 @@ export default {
   }),
   methods: {
     async getSettings() {
-      this.settings = await useFetch('http://localhost:8000/api/get-settings/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK')
+      this.settings = await useFetch('https://cafe-apostrof.jhdevelopers.eu/api/get-settings/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK')
     },
     async getMenus() {
-          this.menus = await useFetch('http://localhost:8000/api/get-menu/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK');
-          this.categories = await useFetch('http://localhost:8000/api/get-categories/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK');
+          this.menus = await useFetch('https://cafe-apostrof.jhdevelopers.eu/api/get-menu/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK');
+          this.categories = await useFetch('https://cafe-apostrof.jhdevelopers.eu/api/get-categories/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK');
     },
     navigateTo(route) {
       console.log('Navigating to:', route);

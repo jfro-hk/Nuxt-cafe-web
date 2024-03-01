@@ -48,11 +48,13 @@ const allowedDates = computed(() => {
 // })
 const api = useApi()
 let message = ref()
-
+let loading = ref(false)
  function postData() {
+  loading.value = false
   if (form.value.fullname != null && form.value.time && form.value.antal) {
      api.post('/make-res/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK', form.value).then(function (response){
        console.log(response.data); // Logging response data
+       loading.value = true
        message.value = response.data;
      });
   }
@@ -110,9 +112,12 @@ console.log(timeSlots);
       <v-form validate-on="submit lazy" @submit.prevent="postData" v-model="valid">
         <v-container>
           <v-row>
-            <v-col cols="12" v-if="message">
+            <v-col cols="12" v-if="loading">
               <div class="alert" :class="message === 204 ? 'err':' succ'">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+<!--                <v-btn icon rounded @click="loading = !loading">-->
+                  <span @click="loading = !loading" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+<!--              </v-btn>-->
                 <strong>{{ message === 204 ? 'Failed' : 'Success' }}</strong> {{ message === 204 ? 'Restauranten er fuld' : 'Reservationen blev gennemført med succes' }}
               </div>
 <!--              <v-alert-->
@@ -187,7 +192,7 @@ console.log(timeSlots);
           </v-row>
           <div class="mt-8">
             <!--            <reservation-btn/>-->
-            <v-btn type="submit" class="text-none" color="#0E0F3D" variant="flat" @click="postData"> Book Now</v-btn>
+            <v-btn :disabled="loading" type="submit" class="text-none" color="#0E0F3D" variant="flat" > Book Now</v-btn>
           </div>
         </v-container>
       </v-form>

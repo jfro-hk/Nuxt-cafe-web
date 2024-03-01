@@ -44,6 +44,6 @@ import {useFetch} from "nuxt/app";
 definePageMeta({
   layout: 'gallery'
 })
-const {data: gallery} = await useFetch('http://localhost:8000/api/get-gallery/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK')
+const {data: gallery} = await useFetch('https://cafe-apostrof.jhdevelopers.eu/api/get-gallery/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK')
 
 </script>

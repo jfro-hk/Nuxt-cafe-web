@@ -34,11 +34,11 @@ defineProps({
     </div>
   </div>
   <div v-else class="d-flex justify-space-between font-c-primary" :class="img">
-    <div class="d-flex mt-10 justify-space-between w-100 mb-10">
+    <div class="d-flex mt-10 justify-space-between align-center w-100 mb-10">
     <div class="ml-11 ">
-      <v-avatar color="primary" size="50">
-        <img src="/assets/Café.png" alt="logo" width="30px" />
-      </v-avatar>
+<!--      <v-avatar  size="80">-->
+        <img src="https://i.postimg.cc/x1sDVkrG/ca-logo.png" alt="logo" width="100px" />
+<!--      </v-avatar>-->
       <v-btn v-if="$vuetify.display.xs || $vuetify.display.sm" color="primary" @click.stop="$emit('sidebar')" class="ml-1" variant="text" >
         <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 94 71" fill="none">
           <line x1="24" y1="21" x2="70" y2="21" stroke="#FFE8D0" stroke-width="2"/>
