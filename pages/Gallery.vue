@@ -4,7 +4,7 @@
     <v-row>
       <v-col cols="12" sm="12" md="6" v-for="(g,index) in Object.values(...gallery)" :key="index">
         <v-card flat class="mx-auto" max-width="600">
-          <v-img cover height="500" :src="`http://localhost:8000${g.media}`">
+          <v-img cover height="500" :src="`https://cafe-apostrof.jhdevelopers.eu${g.media}`">
             <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
               <template v-slot:append>
                 <v-btn block class="text-none" color="#0E0F3D" variant="flat">
