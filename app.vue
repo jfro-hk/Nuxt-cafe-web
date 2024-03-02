@@ -34,7 +34,7 @@
         <!--        </div>-->
         <!--        mt-10 mt-lg-7 mt-md-7-->
         <top-bar :pages="pages" @sidebar="(val)=>{ drawer = !val}" class="position-fixed w-100 " style="z-index: 2"/>
-        <NuxtPage :opening-times="settings.data" :menus="menus.data" :categories="categories.data" class="mt-16"/>
+        <NuxtPage :opening-times="settings.data" :gallery="gallery.data" :dishes="dishes.data" :menus="menus.data" :categories="categories.data" class="mt-16"/>
         <FooterSection/>
       </v-main>
 
@@ -52,7 +52,6 @@
           </v-btn>
 
           <!-- List of pages -->
-
           <v-list class="d-flex justify-center flex-column align-center mt-16">
             <v-list-item v-for="(item, index) in pages" :key="index" @click="navigateTo(item.route)">
               <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -68,7 +67,7 @@
 import TopBar from "@/components/TopBar.vue";
 import FooterSection from "@/components/FooterSection.vue";
 import {useFetch} from "nuxt/app";
-
+import config from "./config"
 export default {
   name: 'App',
   components: {FooterSection, TopBar},
@@ -78,6 +77,8 @@ export default {
     loading: false,
     categories: [],
     menus: [],
+    dishes: [],
+    gallery: [],
     settings: [],
     pages: [
       {title: 'Home', icon: 'mdi-view-dashboard', route: '/'},
@@ -88,11 +89,17 @@ export default {
   }),
   methods: {
     async getSettings() {
-      this.settings = await useFetch('https://cafe-apostrof.jhdevelopers.eu/api/get-settings/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK')
+      this.settings = await useFetch(`${config.api}/get-settings/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK`)
     },
     async getMenus() {
-          this.menus = await useFetch('https://cafe-apostrof.jhdevelopers.eu/api/get-menu/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK');
-          this.categories = await useFetch('https://cafe-apostrof.jhdevelopers.eu/api/get-categories/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK');
+          this.menus = await useFetch(`${config.api}/get-menu/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK`);
+          this.categories = await useFetch(`${config.api}/get-categories/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK`);
+    },
+    async getDishes() {
+      this.dishes = await useFetch(`${config.api}/get-dishes/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK`);
+    },
+    async getGallery() {
+      this.gallery = await useFetch(`${config.api}/get-gallery/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK`);
     },
     navigateTo(route) {
       console.log('Navigating to:', route);
@@ -108,6 +115,8 @@ export default {
   mounted() {
     this.getMenus()
     this.getSettings()
+    this.getDishes()
+    this.getGallery()
     setTimeout(() => {
       this.loading = true;
       this.showVideo = true;

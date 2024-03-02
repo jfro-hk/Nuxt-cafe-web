@@ -64,9 +64,9 @@ const formatedDate = () => {
   return moment(form.value.date).format('DD/MM/YYYY');
 }
 
-function generateTimeSlots(date) {
+function generateTimeSlots() {
   const today = moment();
-  const isToday = moment(date).isSame(today, 'day');
+  const isToday = moment(form.value.date).isSame(today, 'day');
 
   const startTime = moment().set({hour: 11, minute: 30, second: 0}); // Set start time to 11:30 AM
   const endTime = moment().set({hour: 22, minute: 0, second: 0}); // Set end time to 10:00 PM
@@ -97,8 +97,7 @@ function generateTimeSlots(date) {
 }
 
 // Example usage:
-const formDate = form.value.date; // Replace this with your form date
-const timeSlots = generateTimeSlots(moment(formDate).format('YYYY-MM-DD'));
+const timeSlots = generateTimeSlots();
 console.log(timeSlots);
 
 

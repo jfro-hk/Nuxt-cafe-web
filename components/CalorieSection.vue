@@ -24,8 +24,8 @@ const selectedReview = ref(0)
     <div class="mt-6">
       <v-row>
         <v-col sm="4" cols="12">
-          <v-card flat class="mx-auto" max-width="500">
-            <v-img cover height="600" src="../assets/starter.png">
+          <v-card flat class="mx-auto" :max-width="$vuetify.display.xs?300:500">
+            <v-img cover :height="$vuetify.display.xs?300:500" src="../assets/starter.png">
               <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
                 <template v-slot:prepend>
                   <div class="heading-5" style="color: #0e0f3d">Starters</div>
@@ -44,8 +44,8 @@ const selectedReview = ref(0)
           </v-card>
         </v-col>
         <v-col sm="4" cols="12">
-          <v-card flat class="mx-auto" max-width="500">
-            <v-img cover height="600" src="/assets/main.png">
+          <v-card flat class="mx-auto" :max-width="$vuetify.display.xs?300:500">
+            <v-img cover :height="$vuetify.display.xs?300:500" src="/assets/main.png">
               <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
                 <template v-slot:prepend>
                   <div class="heading-5" style="color: #0e0f3d">Mains</div>
@@ -65,7 +65,7 @@ const selectedReview = ref(0)
         </v-col>
         <v-col sm="4" cols="12">
           <v-card flat class="mx-auto" max-width="500">
-            <v-img cover height="600" src="/assets/soup.png">
+            <v-img cover :height="$vuetify.display.xs?300:500" src="/assets/soup.png">
               <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
                 <template v-slot:prepend>
                   <div class="heading-5" style="color: #0e0f3d">Soups</div>

@@ -2,9 +2,10 @@
   <TopSection class="mt-16" title="Gallery" cls="menu-header" img="./assets/gallery_2.png"/>
   <div class="container-space font text-secondary pt-16 pb-16">
     <v-row>
-      <v-col cols="12" sm="12" md="6" v-for="(g,index) in Object.values(...gallery)" :key="index">
-        <v-card flat class="mx-auto" max-width="600">
-          <v-img cover height="500" :src="`https://cafe-apostrof.jhdevelopers.eu${g.media}`">
+      {{gallery}}
+      <v-col cols="12" sm="12" md="6" v-for="(g,index) in gallery" :key="index">
+        <v-card flat class="mx-auto" :max-width="$vuetify.display.xs?300:600">
+          <v-img cover :height="$vuetify.display.xs?300:500"  :src="`${config.cdn}${g.media}`">
             <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
               <template v-slot:append>
                 <v-btn block class="text-none" color="#0E0F3D" variant="flat">
@@ -39,11 +40,8 @@
 </template>
 <script setup>
 import TopSection from "@/components/TopSection.vue";
-import {useFetch} from "nuxt/app";
-
-definePageMeta({
-  layout: 'gallery'
+import config from "../config.js";
+defineProps({
+  gallery:Object
 })
-const {data: gallery} = await useFetch('https://cafe-apostrof.jhdevelopers.eu/api/get-gallery/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK')
-
 </script>
