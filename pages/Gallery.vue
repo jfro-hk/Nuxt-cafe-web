@@ -1,8 +1,8 @@
 <template>
   <TopSection class="mt-16" title="Gallery" cls="menu-header" img="./assets/gallery_2.png"/>
   <div class="container-space font text-secondary pt-16 pb-16">
+
     <v-row>
-      {{gallery}}
       <v-col cols="12" sm="12" md="6" v-for="(g,index) in gallery" :key="index">
         <v-card flat class="mx-auto" :max-width="$vuetify.display.xs?300:600">
           <v-img cover :height="$vuetify.display.xs?300:500"  :src="`${config.cdn}${g.media}`">

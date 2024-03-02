@@ -30,7 +30,9 @@
   right: 685px;
 }
 
-
+.fs-cursive{
+  font-family: cursive !important;
+}
 .bg-secondary{
   background-color: #0e0f3d !important;
 }

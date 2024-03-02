@@ -49,11 +49,14 @@ const allowedDates = computed(() => {
 const api = useApi()
 let message = ref()
 let loading = ref(false)
+let spinner = false
  function postData() {
+  spinner = true
   loading.value = false
   if (form.value.fullname != null && form.value.time && form.value.antal) {
      api.post('/make-res/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK', form.value).then(function (response){
        console.log(response.data); // Logging response data
+       spinner = false
        loading.value = true
        message.value = response.data;
      });
@@ -63,7 +66,13 @@ let loading = ref(false)
 const formatedDate = () => {
   return moment(form.value.date).format('DD/MM/YYYY');
 }
-
+function closeAlert(){
+  loading.value = false
+  form.value.fullname = null
+  form.value.time = null
+  form.value.antal = null
+  form.value.description = null
+}
 function generateTimeSlots() {
   const today = moment();
   const isToday = moment(form.value.date).isSame(today, 'day');
@@ -105,16 +114,24 @@ console.log(timeSlots);
 
 <template>
   <div class="container-space font bg-primary text-secondary pt-16 pb-16 text-center">
-    <div class="heading-2">Make a Reservation</div>
+    <div class="heading-2">Foretag en reservation</div>
     <div class="text-grey-darken-1">Get in touch with restaurant</div>
     <div class="mt-10 " :class="$vuetify.display.xs?'ma-10':''">
       <v-form validate-on="submit lazy" @submit.prevent="postData" v-model="valid">
         <v-container>
           <v-row>
+            <v-progress-circular
+                :size="70"
+                :width="7"
+                v-if="spinner"
+                color="purple"
+                indeterminate
+            ></v-progress-circular>
             <v-col cols="12" v-if="loading">
+
               <div class="alert" :class="message === 204 ? 'err':' succ'">
 <!--                <v-btn icon rounded @click="loading = !loading">-->
-                  <span @click="loading = !loading" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  <span @click="closeAlert()" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 
 <!--              </v-btn>-->
                 <strong>{{ message === 204 ? 'Failed' : 'Success' }}</strong> {{ message === 204 ? 'Restauranten er fuld' : 'Reservationen blev gennemført med succes' }}
@@ -136,7 +153,8 @@ console.log(timeSlots);
 <!--              </v-alert>-->
 
             </v-col>
-            <v-col cols="12" md="6">
+            <template v-if="!loading">
+            <v-col cols="12" md="6" >
 
               <v-text-field :rules="rules.fullname" v-model="form.fullname" placeholder="fulde navn" variant="outlined"
                             required></v-text-field>
@@ -187,11 +205,11 @@ console.log(timeSlots);
             <v-col cols="12">
               <v-textarea placeholder="Tilføj en note" variant="outlined" v-model="form.description"></v-textarea>
             </v-col>
-
+            </template>
           </v-row>
           <div class="mt-8">
             <!--            <reservation-btn/>-->
-            <v-btn :disabled="loading" type="submit" class="text-none" color="#0E0F3D" variant="flat" > Book Now</v-btn>
+            <v-btn v-if="!loading" :disabled="loading" type="submit" class="text-none" color="#0E0F3D" variant="flat" > Book Now</v-btn>
           </div>
         </v-container>
       </v-form>

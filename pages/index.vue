@@ -4,7 +4,7 @@
       <HeaderSection />
       <MenuSection :dishes="dishes" :class="$vuetify.display.xs ? 'ma-10' : ''"/>
       <CookSection />
-      <ItemSection class="mt-10" :class="$vuetify.display.xs ? 'ma-10' : ''"/>
+<!--      <ItemSection class="mt-10" :class="$vuetify.display.xs ? 'ma-10' : ''"/>-->
       <FashionSection :gallery="gallery" :class="$vuetify.display.xs ? 'ma-10' : ''"/>
       <ReservationSection id="reservation" :opening-times="openingTimes" />
       <CalorieSection :class="$vuetify.display.xs ? 'ma-10' : ''"/>

@@ -18,8 +18,8 @@
         <div class="d-flex justify-end">
           <div class="d-flex flex-column align-start heading-5">
             <span> We can be contacted via</span>
-            <span>Email <a href="mailto:kontakt@cafeapostrof.dk" class="text-decoration-none"><span
-                class="text-blue-grey-lighten-1">kontakt@cafeapostrof.dk</span></a></span>
+            <span>Email <a href="mailto:kontakt@apoli.dk" class="text-decoration-none"><span
+                class="text-blue-grey-lighten-1">kontakt@apoli.dk</span></a></span>
             <span>or telephone on <a href="tel:00 45 54 55 66 37" class="text-decoration-none"><span class="text-blue-grey-lighten-1">+45 54 55 66 37</span></a></span>
           </div>
         </div>

@@ -4,7 +4,8 @@
       <div>
         <v-progress-circular :size="55" color="secondary" indeterminate>
           <v-avatar color="primary" size="50">
-            <img src="/assets/Café.png" alt="logo" width="30px"/>
+            <span class="heading-6 fs-cursive font-c-secondary">Apoli</span>
+<!--            <img src="/assets/Café.png" alt="logo" width="30px"/>-->
           </v-avatar>
         </v-progress-circular>
       </div>
@@ -29,7 +30,7 @@
         </v-dialog>
         <!--        <div class="bg-primary d-flex align-center font-c-secondary justify-end position-fixed heading-6 w-100 pr-4 pl-4 pb-4" style="z-index: 2">-->
         <!--          <span>Ring til os? <a href="tel:00 45 54 55 66 37" class="text-decoration-none mr-2">00 45 54 55 66 37</a></span>-->
-        <!--          <span>Eller på mail <a href="mailto:kontakt@cafeapostrof.dk" class="text-decoration-none mr-2">kontakt@cafeapostrof.dk</a></span>-->
+        <!--          <span>Eller på mail <a href="mailto:kontakt@apoli.dk" class="text-decoration-none mr-2">kontakt@cafeapostrof.dk</a></span>-->
 
         <!--        </div>-->
         <!--        mt-10 mt-lg-7 mt-md-7-->
@@ -81,10 +82,10 @@ export default {
     gallery: [],
     settings: [],
     pages: [
-      {title: 'Home', icon: 'mdi-view-dashboard', route: '/'},
+      {title: 'Hjem', icon: 'mdi-view-dashboard', route: '/'},
       {title: 'Menu', icon: 'mdi-account', route: '/menu'},
-      {title: 'Gallery', icon: 'mdi-account', route: '/gallery'},
-      {title: 'Contact', icon: 'mdi-account', route: '/contact'},
+      {title: 'Event', icon: 'mdi-account', route: '/gallery'},
+      {title: 'Kontakt', icon: 'mdi-account', route: '/contact'},
     ]
   }),
   methods: {

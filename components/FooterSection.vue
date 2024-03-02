@@ -12,27 +12,27 @@ const email = ref("");
       :class="$vuetify.display.sm || $vuetify.display.xs ? 'text-center' : ''"
     >
       <v-row>
-        <v-col cols="12" sm="6" md="4">
-          <div class="heading-3">
-            <div>Café</div>
-            <div>Apostrof</div>
-          </div>
-        </v-col>
-        <v-col cols="12" sm="6" md="4">
+<!--        <v-col cols="12" sm="6" md="4">-->
+<!--          <div class="heading-3">-->
+<!--            <div>Café</div>-->
+<!--            <div>Apostrof</div>-->
+<!--          </div>-->
+<!--        </v-col>-->
+        <v-col cols="12" sm="6" md="6">
           <div>
-            <div class="heading-6">Contact</div>
+            <div class="heading-6">Kontakt</div>
             <div class="mt-8 text-body">
-              <div> +45 54 55 66 37</div>
-              <div>kontakt@cafeapostrof.dk</div>
+              <div> +45 00 00 00 00</div>
+              <div>kontakt@apoli.dk</div>
             </div>
             <div class="mt-8 text-body">
 
-              <div>Havnegade 2A 5800 Nyborg</div>
+              <div>Nyborg</div>
 <!--              <div>Culver City, CA, 90230</div>-->
             </div>
           </div>
         </v-col>
-        <v-col cols="12" sm="12" md="4">
+        <v-col cols="12" sm="12" md="6">
           <div>
             <div class="heading-6">Åbningstider</div>
             <div class="d-flex mt-5">
@@ -105,7 +105,7 @@ const email = ref("");
     <!-- <div class="container-space mt-8 d-flex justify-space-between"> -->
     <div class="container-space ">
       <v-row class="mt-8">
-        <v-col class="text-caption">© {{ moment(new Date).format('YYYY') }} Café Apostrof Inc. All rights Reserved</v-col>
+        <v-col class="text-caption">© {{ moment(new Date).format('YYYY') }} JH Digital Inc. All rights Reserved</v-col>
         <v-col class="d-flex">
           <div>
             <v-btn

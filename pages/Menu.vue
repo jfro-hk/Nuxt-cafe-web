@@ -12,12 +12,13 @@
       <template v-for="(category, index) in categories" :key="index" >
 <!--        <v-row>-->
       <v-col cols="12" md="6" lg="6" v-if="category.menu_id == tab">
-        <span class="heading-3 text-capitalize d-flex justify-center align-center font-c-secondary" style="filter: drop-shadow(20px 20px 20px rgba(61,94,225,0.65));">{{category.name}}</span>
+<!--        style="filter: drop-shadow(20px 20px 20px rgba(61,94,225,0.65));"-->
+        <span class="heading-3 text-capitalize d-flex justify-center align-center font-c-secondary fs-cursive" >{{category.name}}</span>
 <!--        <v-row class="justify-center">-->
         <template v-for="(dish, index) in dishes" :key="index" >
         <v-col cols="12" v-if="dish.menu_id == tab && category.id == dish.category_id">
             <div class="text-right heading-5" style="border-bottom: 2px dotted">
-              ${{ dish.price }}
+              {{ dish.price }},-
             </div>
             <div class="mt-4">
               <div class="heading-4">
@@ -29,38 +30,10 @@
 
         </template>
 
-<!--        <v-col v-if="!menuGroup.category_id">-->
-<!--          <h1 class="heading-1">There are no dishes </h1>-->
-<!--        </v-col>-->
-
-<!--      </v-row>-->
       </v-col>
       </template>
 
     </v-row>
-    <!--      </v-window>-->
-    <!--    <v-window  v-model="onboarding" show-arrows>-->
-    <!--      <v-window-item v-for="(menuGroup, index) in menus.data" :key="index">-->
-    <!--        <v-container fluid v-if="menuGroup.category_id == tab">-->
-
-    <!--          <v-row class="justify-center mt-16">-->
-
-    <!--            <v-col cols="12" md="5">-->
-    <!--              <div class="text-right heading-5" style="border-bottom: 2px dotted">-->
-    <!--                ${{ menuGroup.price }}-->
-    <!--              </div>-->
-    <!--              <div  class="mt-4">-->
-    <!--                <div class="heading-4">-->
-    <!--                  <div>{{ menuGroup.dish_title }}</div>-->
-    <!--&lt;!&ndash;                  <div>Cod Fillet</div> &lt;!&ndash; Assuming this is a static text &ndash;&gt;&ndash;&gt;-->
-    <!--                </div>-->
-    <!--                <div>{{ menuGroup.description_title }}</div>-->
-    <!--              </div>-->
-    <!--            </v-col>-->
-    <!--          </v-row>-->
-    <!--        </v-container>-->
-    <!--      </v-window-item>-->
-    <!--    </v-window>-->
   </v-card>
 </template>
 <script>

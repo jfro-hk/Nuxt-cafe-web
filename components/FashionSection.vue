@@ -8,6 +8,9 @@ defineProps({
 <template>
   <div class="container-space font text-secondary pt-lg-16 pt-md-16 pb-lg-16 pb-md-16">
     <v-row>
+     <v-col cols="12" class="mb-7">
+       <div class="heading-2">Latest Events</div>
+     </v-col>
       <v-col cols="12" sm="12" md="6" v-for="(g,index) in gallery.slice(0, 2)" :key="index">
         <v-card flat class="mx-auto" :max-width="$vuetify.display.xs?400:600">
           <v-img cover :height="$vuetify.display.xs?300:500" :src="config.cdn + g.media">
