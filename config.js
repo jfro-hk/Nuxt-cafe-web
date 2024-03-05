@@ -1,6 +1,6 @@
 const api = {
-    api:'http://localhost:8000/api',
-    cdn:'http://localhost:8000'
+    api:'https://cafe-apostrof.jhdevelopers.eu/api',
+    cdn:'https://cafe-apostrof.jhdevelopers.eu'
 }
 
 export default api
