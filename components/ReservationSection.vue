@@ -115,7 +115,7 @@ console.log(timeSlots);
 <template>
   <div class="container-space font bg-primary text-secondary pt-16 pb-16 text-center">
     <div class="heading-2">Foretag en reservation</div>
-    <div class="text-grey-darken-1">Get in touch with restaurant</div>
+    <div class="text-grey-darken-1">📞 Ready to embark on a culinary adventure? Make your reservation today and join us at Apoli for a dining experience that's second to none. We can't wait to welcome you and make your visit truly unforgettable!</div>
     <div class="mt-10 " :class="$vuetify.display.xs?'ma-10':''">
       <v-form validate-on="submit lazy" @submit.prevent="postData" v-model="valid">
         <v-container>

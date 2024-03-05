@@ -1,5 +1,5 @@
 <template>
-  <TopSection class="mt-16" cls="menu-header" title="Get in Touch" img="https://i.postimg.cc/wBqx8bxm/get-in-touch.png"/>
+  <TopSection class="mt-16" cls="menu-header" title="Tag kontakt" img="https://i.postimg.cc/wBqx8bxm/get-in-touch.png"/>
   <div class="container-space font text-secondary pt-16 pb-16 text-center mt-16">
     <v-row>
       <v-col cols="12" md="6" lg="6">
@@ -17,10 +17,10 @@
       <v-col cols="12" md="6" lg="6">
         <div class="d-flex justify-end">
           <div class="d-flex flex-column align-start heading-5">
-            <span> We can be contacted via</span>
+            <span>Vi kan kontaktes via Mail </span>
             <span>Email <a href="mailto:kontakt@apoli.dk" class="text-decoration-none"><span
                 class="text-blue-grey-lighten-1">kontakt@apoli.dk</span></a></span>
-            <span>or telephone on <a href="tel:00 45 54 55 66 37" class="text-decoration-none"><span class="text-blue-grey-lighten-1">+45 54 55 66 37</span></a></span>
+            <span>eller telefon på <a href="tel:00 45 00 00 00 00" class="text-decoration-none"><span class="text-blue-grey-lighten-1">+45 00 00 00 00</span></a></span>
           </div>
         </div>
       </v-col>
@@ -29,7 +29,7 @@
       <v-col cols="12" md="6" lg="6">
         <div class="d-flex flex-column align-center heading-5">
           <div class="d-flex align-center flex-column mt-16 ga-16">
-            <span>We are located in  Havnegade 2A 5800 Nyborg</span>
+            <span>Vi holder til i Havnegade 2A 5800 Nyborg</span>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2270.7571850729773!2d10.790115776716336!3d55.30986287292352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464d3ee5eb0da567%3A0xf8ee8a1323aace4b!2sHavnegade%202A%2C%205800%20Nyborg%2C%20Denmark!5e0!3m2!1sen!2snl!4v1708013686463!5m2!1sen!2snl"
                 width="600" height="450" style="border:0; width: 100%" allowfullscreen="" loading="lazy"
@@ -49,8 +49,8 @@
   <div class="container-space bg-sec-primary pt-6 font-c-secondary w-100">
     <div class="d-flex justify-center mt-10">
       <div class="">
-        <div class="heading-2">Contact Us</div>
-        <div class="text-grey-darken-1">Get in touch with restaurant</div>
+        <div class="heading-2">Kontakt os</div>
+        <div class="text-grey-darken-1 text-center">Tag kontakt til restaurant</div>
       </div>
     </div>
     <div class="mt-md-10 mt-lg-10">
@@ -58,7 +58,7 @@
         <v-container>
           <v-row>
             <v-col cols="12" md="6">
-              <v-text-field placeholder="Full Name"
+              <v-text-field placeholder="Fulde navn"
                             variant="outlined"
                             required
                             hide-details
@@ -74,7 +74,7 @@
               <v-textarea variant="outlined"
                           required
                           hide-details
-                          placeholder="Tell us!"
+                          placeholder="Fortæl os!"
               >
 
               </v-textarea>

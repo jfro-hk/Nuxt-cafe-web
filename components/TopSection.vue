@@ -2,7 +2,11 @@
 defineProps({
   img: String,
   cls: String,
-  title:String
+  title:String,
+  sub:{
+    type:String,
+    default: 'De friskeste ingredienser til dig hver dag'
+  }
 })
 </script>
 
@@ -19,7 +23,7 @@ defineProps({
 <!--          View Our <br>-->
 <!--          New Menu-->
         </div>
-        <span class="fcw">The freshest ingredients for you every day</span>
+        <span class="fcw">{{sub}}</span>
       </div>
 <!--      <div class="d-flex">-->
 <!--      </div>-->

@@ -14,7 +14,7 @@ const selectedReview = ref(0)
   <div class="container-space font text-secondary pt-16 pb-16 text-center">
     <div class="text-center">
       <div class="heading-2">
-        <div>Calories Energy</div>
+        <div>Kalorier energi</div>
         <div>Balance</div>
       </div>
       <div class="mt-4 text-grey-darken-1">
@@ -89,9 +89,7 @@ const selectedReview = ref(0)
     <div>
       <div class="mt-8 d-flex">
         <div class="heading-5 text-secondary text-left">
-          <div>“ Lorem ipsum dolor sit amet, consectetur adipiscing</div>
-          <div>elit. Purus lorem id penatibus imperdiet. Turpis egestas</div>
-          <div>ultricies purus Lorem ipsum dolor sit amet.</div>
+          Follow us on social media for the latest updates, special offers, and behind-the-scenes glimpses of our kitchen. Join our community of food enthusiasts and stay connected wherever you go.
         </div>
         <div style="margin-left: -80px">
           <img
