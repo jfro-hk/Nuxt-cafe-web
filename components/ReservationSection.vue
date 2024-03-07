@@ -183,7 +183,7 @@ console.log(timeSlots);
               ></v-select>
             </v-col>
             <v-col cols="12" md="6">
-              <v-menu ref="menu" :close-on-content-click="false">
+              <v-menu ref="menu" :close-on-content-click="true">
                 <template v-slot:activator="{ props }">
                   <v-text-field
                       placeholder="Fulde navn"

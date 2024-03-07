@@ -47,7 +47,7 @@
       <v-col class="d-flex justify-center" cols="12" sm="12" md="6">
         <div>
           <div style="max-width: 400px">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque congue arcu
+            Forkæl dine smagsløg med vores fortryllende smagsoplevelser. Nyd hvert bid af vores kulinariske mesterværker.
           </div>
           <div class="mt-14 mx-auto"> 
             <v-img class="mx-auto" style="max-width: 500px;" :style="$vuetify.display.xs ? 'max-width: 350px;' : ''" src="/assets/Image (1).png" />
