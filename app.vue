@@ -13,8 +13,7 @@
 
     <v-app v-else>
       <v-main>
-
-        <v-dialog class="videoWrapper" width="auto" v-model="showVideo">
+        <v-dialog v-if="settings.data.video" class="videoWrapper" width="auto" v-model="showVideo">
           <template v-slot:default="{ isActive }">
             <v-btn style="position: absolute; right: 0;top: -50px" icon variant="text" rounded @click="showVideo = !showVideo">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 28 28" fill="none">

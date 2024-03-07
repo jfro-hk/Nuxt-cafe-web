@@ -34,7 +34,7 @@
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2270.7571850729773!2d10.790115776716336!3d55.30986287292352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464d3ee5eb0da567%3A0xf8ee8a1323aace4b!2sHavnegade%202A%2C%205800%20Nyborg%2C%20Denmark!5e0!3m2!1sen!2snl!4v1708013686463!5m2!1sen!2snl"
                 width="600" height="450" style="border:0; width: 100%" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <v-btn variant="flat" @click="redirectToMaps" color="#0e0f3d">View in maps</v-btn>
+            <v-btn variant="flat" @click="redirectToMaps" color="#0e0f3d">Se på kortet</v-btn>
           </div>
         </div>
       </v-col>

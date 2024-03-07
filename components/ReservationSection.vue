@@ -219,7 +219,7 @@ console.log(timeSlots);
           </v-row>
           <div class="mt-8">
             <!--            <reservation-btn/>-->
-            <v-btn v-if="!loading" :disabled="spinner" type="submit" class="text-none" color="#0E0F3D" variant="flat" > Book Now</v-btn>
+            <v-btn v-if="!loading" :disabled="spinner" type="submit" class="text-none" color="#0E0F3D" variant="flat" > Book Nu</v-btn>
           </div>
         </v-container>
       </v-form>
