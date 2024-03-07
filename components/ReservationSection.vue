@@ -49,19 +49,29 @@ const allowedDates = computed(() => {
 const api = useApi()
 let message = ref()
 let loading = ref(false)
-let spinner = false
- function postData() {
-  spinner = true
-  loading.value = false
-  if (form.value.fullname != null && form.value.time && form.value.antal) {
-     api.post('/make-res/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK', form.value).then(function (response){
-       console.log(response.data); // Logging response data
-       spinner = false
-       loading.value = true
-       message.value = response.data;
-     });
-  }
+let spinner = ref(false)
+function postData() {
+  spinner.value = true;
+  loading.value = false;
+  setTimeout(function() {
+    if (form.value.fullname != null && form.value.time && form.value.antal) {
+      api.post('/make-res/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK', form.value)
+          .then(function(response) {
+            console.log(response.data); // Logging response data
+            spinner.value = false;
+            loading.value = true;
+            message.value = response.data;
+          })
+          .catch(function(error) {
+            console.error('Error:', error);
+            spinner.value = false;
+            loading.value = true;
+            message.value = 'An error occurred while making the reservation.';
+          });
+    }
+  }, 3000);
 }
+
 
 const formatedDate = () => {
   return moment(form.value.date).format('DD/MM/YYYY');
@@ -121,21 +131,22 @@ console.log(timeSlots);
         <v-container>
           <v-row>
             <v-progress-circular
+                style="right: 47%;top: 65%;"
+                class="position-absolute"
                 :size="70"
                 :width="7"
                 v-if="spinner"
-                color="purple"
+                color="#0e0f3d"
                 indeterminate
             ></v-progress-circular>
             <v-col cols="12" v-if="loading">
-
               <div class="alert" :class="message === 204 ? 'err':' succ'">
 <!--                <v-btn icon rounded @click="loading = !loading">-->
                   <span @click="closeAlert()" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-
 <!--              </v-btn>-->
                 <strong>{{ message === 204 ? 'Failed' : 'Success' }}</strong> {{ message === 204 ? 'Restauranten er fuld' : 'Reservationen blev gennemført med succes' }}
               </div>
+
 <!--              <v-alert-->
 <!--                  border="start"-->
 <!--                  close-label="Close"-->
@@ -155,7 +166,6 @@ console.log(timeSlots);
             </v-col>
             <template v-if="!loading">
             <v-col cols="12" md="6" >
-
               <v-text-field :rules="rules.fullname" v-model="form.fullname" placeholder="fulde navn" variant="outlined"
                             required></v-text-field>
             </v-col>
@@ -209,7 +219,7 @@ console.log(timeSlots);
           </v-row>
           <div class="mt-8">
             <!--            <reservation-btn/>-->
-            <v-btn v-if="!loading" :disabled="loading" type="submit" class="text-none" color="#0E0F3D" variant="flat" > Book Now</v-btn>
+            <v-btn v-if="!loading" :disabled="spinner" type="submit" class="text-none" color="#0E0F3D" variant="flat" > Book Now</v-btn>
           </div>
         </v-container>
       </v-form>
