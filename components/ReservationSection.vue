@@ -123,9 +123,9 @@ console.log(timeSlots);
 </script>
 
 <template>
-  <div class="container-space font bg-primary text-secondary pt-16 pb-16 text-center">
+  <div class="container-space font font-c-secondary font-c-secondary pt-16 pb-16 text-center">
     <div class="heading-2">Foretag en reservation</div>
-    <div class="text-grey-darken-1">📞 Ready to embark on a culinary adventure? Make your reservation today and join us at Apoli for a dining experience that's second to none. We can't wait to welcome you and make your visit truly unforgettable!</div>
+    <div class="text-grey-darken-1">📞 Klar til at begive sig ud på et kulinarisk eventyr? Foretag din reservation i dag, og slutt dig til os på Apoli for en madoplevelse, der er uden sidestykke. Vi kan ikke vente med at byde dig velkommen og gøre dit besøg virkelig uforglemmeligt! </div>
     <div class="mt-10 " :class="$vuetify.display.xs?'ma-10':''">
       <v-form validate-on="submit lazy" @submit.prevent="postData" v-model="valid">
         <v-container>
@@ -147,24 +147,8 @@ console.log(timeSlots);
                 <strong>{{ message === 204 ? 'Failed' : 'Success' }}</strong> {{ message === 204 ? 'Restauranten er fuld' : 'Reservationen blev gennemført med succes' }}
               </div>
 
-<!--              <v-alert-->
-<!--                  border="start"-->
-<!--                  close-label="Close"-->
-<!--                  closable-->
-<!--                  v-if="message"-->
-<!--                  :title="message === 204 ? 'Failed' : 'Success'"-->
-<!--                  :type="message === 204 ? 'error' : 'success'"-->
-<!--              >-->
-<!--                <template #close-icon>-->
-<!--                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">-->
-<!--                    <path d="M2 26L14 14M14 14L26 2M14 14L2 2M14 14L26 26" stroke="#A3AED0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>-->
-<!--                  </svg>-->
-<!--                </template>-->
-<!--                <h3 class="font">{{ message === 204 ? 'Restauranten er fuld' : 'Reservationen blev gennemført med succes' }}</h3>-->
-<!--              </v-alert>-->
-
             </v-col>
-            <template v-if="!loading">
+            <template  v-if="!loading" >
             <v-col cols="12" md="6" >
               <v-text-field :rules="rules.fullname" v-model="form.fullname" placeholder="fulde navn" variant="outlined"
                             required></v-text-field>
@@ -197,7 +181,7 @@ console.log(timeSlots);
 
                 <v-date-picker
                     v-model="form.date" :max-width="$vuetify.display.width < 300 ? 250 : 380"
-                    color="#0e0f3d"
+                    color="#819d7c"
                     :allowed-dates="allowedDates"
                 ></v-date-picker>
                 <!--                <v-date-picker v-model="form.date" :max-width="$vuetify.display.width < 300 ? 250 : 380"></v-date-picker>-->
@@ -213,13 +197,13 @@ console.log(timeSlots);
               ></v-select>
             </v-col>
             <v-col cols="12">
-              <v-textarea placeholder="Tilføj en note" variant="outlined" v-model="form.description"></v-textarea>
+              <v-textarea placeholder="Tilføj en note" variant="outlined" v-model="form.description "></v-textarea>
             </v-col>
             </template>
           </v-row>
           <div class="mt-8">
             <!--            <reservation-btn/>-->
-            <v-btn v-if="!loading" :disabled="spinner" type="submit" class="text-none" color="#0E0F3D" variant="flat" > Book Nu</v-btn>
+            <v-btn v-if="!loading" :disabled="spinner" type="submit" class="text-none" color="#819d7c" variant="flat" > Book Nu</v-btn>
           </div>
         </v-container>
       </v-form>
@@ -247,7 +231,7 @@ console.log(timeSlots);
 }
 .closebtn {
   margin-left: 15px;
-  color: white;
+  color: #819d7c;
   font-weight: bold;
   float: right;
   font-size: 22px;
@@ -257,6 +241,6 @@ console.log(timeSlots);
 }
 
 .closebtn:hover {
-  color: black;
+  color: #819d7c;
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
-  <TopSection class="mt-16" title="Vores Menu" cls="menu-header" img="/assets/menu.png"/>
+  <TopSection class="mt-16" title="Vores Menu" cls="menu-header" img="/assets/menu.JPG"/>
   <v-card class="mb-16" elevation="0">
     <div class="d-flex justify-space-between align-center menu-con-top">
       <span class="heading-3 text-capitalize">Seneste retter</span>
-      <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="center">
+      <v-tabs v-model="tab" color="#819d7c" align-tabs="center">
         <v-tab v-for="tabItem in menus" :key="tabItem.id" :value="tabItem.id">{{ tabItem.title }}</v-tab>
       </v-tabs>
     </div>
@@ -17,11 +17,11 @@
 <!--        <v-row class="justify-center">-->
         <template v-for="(dish, index) in dishes" :key="index" >
         <v-col cols="12" v-if="dish.menu_id == tab && category.id == dish.category_id">
-            <div class="text-right heading-5" style="border-bottom: 2px dotted">
+            <div class="text-right heading-8" style="border-bottom: 2px dotted">
               {{ dish.price }},-
             </div>
             <div class="mt-4">
-              <div class="heading-4">
+              <div class="heading-6">
                 <div>{{ dish.title }}</div>
               </div>
               <div>{{ dish.description }}</div>

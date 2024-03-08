@@ -18,14 +18,13 @@ const selectedReview = ref(0)
         <div>Balance</div>
       </div>
       <div class="mt-4 text-grey-darken-1">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </div>
     </div>
     <div class="mt-6">
       <v-row>
         <v-col sm="4" cols="12">
           <v-card flat class="mx-auto" :max-width="$vuetify.display.xs?300:500">
-            <v-img cover :height="$vuetify.display.xs?300:500" src="../assets/starter.png">
+            <v-img cover :height="$vuetify.display.xs?300:500" src="../assets/main.JPG">
               <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
                 <template v-slot:prepend>
                   <div class="heading-5" style="color: #0e0f3d">Starters</div>
@@ -45,7 +44,7 @@ const selectedReview = ref(0)
         </v-col>
         <v-col sm="4" cols="12">
           <v-card flat class="mx-auto" :max-width="$vuetify.display.xs?300:500">
-            <v-img cover :height="$vuetify.display.xs?300:500" src="/assets/main.png">
+            <v-img cover :height="$vuetify.display.xs?300:500" src="/assets/RES.PNG">
               <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
                 <template v-slot:prepend>
                   <div class="heading-5" style="color: #0e0f3d">Mains</div>
@@ -65,7 +64,7 @@ const selectedReview = ref(0)
         </v-col>
         <v-col sm="4" cols="12">
           <v-card flat class="mx-auto" max-width="500">
-            <v-img cover :height="$vuetify.display.xs?300:500" src="/assets/soup.png">
+            <v-img cover :height="$vuetify.display.xs?300:500" src="/assets/main.JPG">
               <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
                 <template v-slot:prepend>
                   <div class="heading-5" style="color: #0e0f3d">Soups</div>
@@ -89,7 +88,7 @@ const selectedReview = ref(0)
     <div>
       <div class="mt-8 d-flex">
         <div class="heading-5 text-secondary text-left">
-          Follow us on social media for the latest updates, special offers, and behind-the-scenes glimpses of our kitchen. Join our community of food enthusiasts and stay connected wherever you go.
+          Følg os på sociale medier for de seneste opdateringer, særlige tilbud og glimt bag kulisserne af vores køkken. Slut dig til vores fællesskab af madentusiaster og hold forbindelsen, uanset hvor du går.
         </div>
         <div style="margin-left: -80px">
           <img

@@ -16,7 +16,7 @@
           <v-card-text class="text-center">
             <div class="heading-5 mt-4">Premium Quality</div>
             <div class="mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque congue arcu
+
             </div>
           </v-card-text>
         </v-card>
@@ -34,7 +34,7 @@
           <v-card-text class="text-center">
             <div class="heading-5 mt-4">Seasonal Vegetables</div>
             <div class="mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque congue arcu
+
             </div>
           </v-card-text>
         </v-card>
@@ -52,7 +52,7 @@
           <v-card-text class="text-center">
             <div class="heading-5 mt-4">Fresh Fruit</div>
             <div class="mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque congue arcu
+           
             </div>
           </v-card-text>
         </v-card>

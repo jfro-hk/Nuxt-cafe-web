@@ -1,5 +1,5 @@
 <template>
-  <TopSection class="mt-16" title="Events" sub="Vores seneste begivenheder" cls="menu-header" img="./assets/gallery_2.png"/>
+  <TopSection class="mt-16" title="Events" sub="Vores seneste begivenheder" cls="menu-header" img="./assets/header-img1.png"/>
   <div class="container-space font text-secondary pt-16 pb-16">
 
     <v-row>
@@ -8,8 +8,8 @@
           <v-img cover :height="$vuetify.display.xs?300:500"  :src="`${config.cdn}${g.media}`">
             <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
               <template v-slot:append>
-                <v-btn block class="text-none" color="#0E0F3D" variant="flat">
-                  Fashion
+                <v-btn block class="text-none" color="#819d7c" variant="flat">
+                  Event
                 </v-btn>
               </template>
             </v-toolbar>

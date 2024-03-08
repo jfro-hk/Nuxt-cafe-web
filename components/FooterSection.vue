@@ -12,12 +12,7 @@ const email = ref("");
       :class="$vuetify.display.sm || $vuetify.display.xs ? 'text-center' : ''"
     >
       <v-row>
-<!--        <v-col cols="12" sm="6" md="4">-->
-<!--          <div class="heading-3">-->
-<!--            <div>Café</div>-->
-<!--            <div>Apostrof</div>-->
-<!--          </div>-->
-<!--        </v-col>-->
+
         <v-col cols="12" sm="6" md="6">
           <div>
             <div class="heading-6">Kontakt</div>
@@ -27,8 +22,7 @@ const email = ref("");
             </div>
             <div class="mt-8 text-body">
 
-              <div>Nyborg</div>
-<!--              <div>Culver City, CA, 90230</div>-->
+              <div>Slotsgade 9 5800 Nyborg</div>
             </div>
           </div>
         </v-col>
@@ -36,7 +30,7 @@ const email = ref("");
           <div>
             <div class="heading-6">Åbningstider</div>
             <div class="d-flex mt-5">
-<!--              <h2>Åbningstider</h2>-->
+
 
               <table>
                 <tr>
@@ -51,33 +45,33 @@ const email = ref("");
                 </tr>
                 <tr>
                   <td>Tirsdag</td>
-                  <td>11:30</td>
+                  <td>09:00</td>
                   <td>22:00</td>
                 </tr>
                 <tr>
                   <td>Onsdag</td>
-                  <td>11:30</td>
+                  <td>09:00</td>
                   <td>22:00</td>
                 </tr>
                 <tr>
                   <td>Torsdag</td>
-                  <td>11:30</td>
+                  <td>09:00</td>
                   <td>22:00</td>
                 </tr>
                 <tr>
                   <td>Fredag</td>
-                  <td>11:30</td>
+                  <td>09:00</td>
                   <td>22:00</td>
                 </tr>
                 <tr>
                   <td>Lørdag</td>
-                  <td>11:30</td>
+                  <td>09:00</td>
                   <td>22:00</td>
                 </tr>
                 <tr>
                   <td>Søndag</td>
-                  <td>11:30</td>
-                  <td>22:00</td>
+                  <td>09:00</td>
+                  <td>15:00</td>
                 </tr>
               </table>
 

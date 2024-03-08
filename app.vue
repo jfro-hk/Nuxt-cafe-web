@@ -38,16 +38,16 @@
         <FooterSection/>
       </v-main>
 
-      <v-navigation-drawer v-model="drawer" class="app-drawer" width="auto" color="#0e0f3d">
-        <v-card elevation="0" style="background: #0e0f3d; color: #fff">
+      <v-navigation-drawer v-model="drawer" class="app-drawer" width="auto" color="#0e0819d7cf3d">
+        <v-card elevation="0" style="background: #819d7c; color: #fff">
           <v-btn variant="text" icon class="icon-dense drawer-close ml-auto mb-4 d-block" @click="drawer = !drawer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M18.7081 5.29289C19.0986 5.68342 19.0986 6.31658 18.7081 6.70711L6.70808 18.7071C6.31756 19.0976 5.68439 19.0976 5.29387 18.7071C4.90335 18.3166 4.90335 17.6834 5.29387 17.2929L17.2939 5.29289C17.6844 4.90237 18.3176 4.90237 18.7081 5.29289Z"
-                    fill="#D9D8DA"/>
+                    fill="#fff"/>
               <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M5.29387 5.29289C5.68439 4.90237 6.31756 4.90237 6.70808 5.29289L18.7081 17.2929C19.0986 17.6834 19.0986 18.3166 18.7081 18.7071C18.3176 19.0976 17.6844 19.0976 17.2939 18.7071L5.29387 6.70711C4.90335 6.31658 4.90335 5.68342 5.29387 5.29289Z"
-                    fill="#D9D8DA"/>
+                    fill="#fff"/>
             </svg>
           </v-btn>
 
