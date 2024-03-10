@@ -123,7 +123,7 @@ console.log(timeSlots);
 </script>
 
 <template>
-  <div class="container-space font font-c-secondary font-c-secondary pt-16 pb-16 text-center">
+  <div class="container-space font font-c-secondary font-c-secondary pt-16 pb-16 text-center bg-primary">
     <div class="heading-2">Foretag en reservation</div>
     <div class="text-grey-darken-1">📞 Klar til at begive sig ud på et kulinarisk eventyr? Foretag din reservation i dag, og slutt dig til os på Apoli for en madoplevelse, der er uden sidestykke. Vi kan ikke vente med at byde dig velkommen og gøre dit besøg virkelig uforglemmeligt! </div>
     <div class="mt-10 " :class="$vuetify.display.xs?'ma-10':''">

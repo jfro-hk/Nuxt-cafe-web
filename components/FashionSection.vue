@@ -19,8 +19,8 @@ defineProps({
           <v-img cover :height="$vuetify.display.xs?300:500" :src="config.cdn + g.media">
             <v-toolbar color="rgba(0, 0, 0, 0)" theme="dark">
               <template v-slot:append>
-                <v-btn block class="text-none" color="#0E0F3D" variant="flat">
-                  Fashion
+                <v-btn block class="text-none" color="#819d7c" variant="flat">
+                  Event
                 </v-btn>
               </template>
             </v-toolbar>

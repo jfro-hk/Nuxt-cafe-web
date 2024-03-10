@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="overflow-hidden">
     <div v-if="!loading" class="d-flex justify-center align-center text-center" style="height: 100vh">
       <div>
         <v-progress-circular :size="55" color="secondary" indeterminate>

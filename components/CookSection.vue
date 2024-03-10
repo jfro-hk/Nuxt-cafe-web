@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="container-space font text-secondary bg-primary ">
+  <div class="container-space font text-secondary bg-primary">
 <!--    <v-row >-->
 <!--      <v-col sm="12" md="6" cols="12">-->
         <div class="d-flex justify-space-between w-100 align-center pa-3">

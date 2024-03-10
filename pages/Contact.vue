@@ -61,11 +61,12 @@
         <div class="d-flex flex-column align-center heading-5">
           <div class="d-flex align-center flex-column mt-16 ga-16">
             <span>Vi holder til i Slotsgade 9 5800 Nyborg</span>
+<!--            width="600"-->
+<!--            height="450"-->
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2270.6359741918286!2d10.788928!3d55.31197979999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464d3ff6a18f3fe3%3A0x2f098979961e1684!2sApoli!5e0!3m2!1sen!2sdk!4v1709899771751!5m2!1sen!2sdk"
-              width="600"
               height="450"
-              style="border: 0"
+              style="border: 0;width: 100%;"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
