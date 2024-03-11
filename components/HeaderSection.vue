@@ -7,9 +7,9 @@
 <!--    </div>-->
 
     <!-- Section 1 -->
-    <v-row class="mt-16 font-c-primary" :class="$vuetify.display.xs?'ma-5':''">
+    <v-row class="font-c-primary align-center" :class="$vuetify.display.xs?'ma-5':''">
       <v-col sm="12" md="6" cols="12">
-        <div class="heading-2 mt-4 ">
+        <div class="heading-2 mt-4">
           <div>"Oplev Enestående Smagsoplevelser i Hjertet af Nyborg på Apoli!"</div>
 <!--          <div>is important</div>-->
 <!--          <div>part of lifestyle</div>-->
@@ -19,7 +19,7 @@
 <!--        </div>-->
       </v-col>
       <v-col class="d-none d-md-block d-lg-block" sm="12" md="6" cols="12" >
-        <v-img class="position: relative" style="height: 931px" src="/assets/header-img1.png" />
+        <v-img class="position: relative" style="height: 731px" src="/assets/header-img1.png" />
 <!--        <div class="header-image-position">-->
 <!--          <v-img src="/assets/Images.png" />-->
 <!--        </div>-->

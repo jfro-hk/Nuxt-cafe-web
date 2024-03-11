@@ -80,7 +80,7 @@
       <v-col cols="12" md="6" lg="6">
         <div class="d-flex justify-end">
           <v-img
-            src=""
+            src="https://i.postimg.cc/44cFzSBV/pngegg.png"
             max-width="500"
           ></v-img>
         </div>
