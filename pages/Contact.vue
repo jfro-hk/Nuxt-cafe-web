@@ -48,7 +48,7 @@
               >eller telefon på
               <a href="tel:00 45 00 00 00 00" class="text-decoration-none"
                 ><span class="text-blue-grey-lighten-1"
-                  >+45 00 00 00 00</span
+                  >+45 53 34 54 66</span
                 ></a
               ></span
             >

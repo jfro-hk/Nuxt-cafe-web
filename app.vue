@@ -4,8 +4,8 @@
       <div>
         <v-progress-circular :size="55" color="secondary" indeterminate>
           <v-avatar color="primary" size="50">
-            <span class="heading-6 fs-cursive font-c-secondary">Apoli</span>
-<!--            <img src="/assets/Café.png" alt="logo" width="30px"/>-->
+            <span class="heading-6 fs-cursive font-c-secondary"></span>
+    <img src="/assets/spin.png" alt="logo" width="80px"/>
           </v-avatar>
         </v-progress-circular>
       </div>
