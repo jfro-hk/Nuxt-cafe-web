@@ -17,6 +17,7 @@
           src="/assets/header-img1.png"
         />
       </v-col>
+
     </v-row>
 
     <!-- Section 2 -->
@@ -24,29 +25,34 @@
       class="mt-14 font-c-primary"
       :class="$vuetify.display.xs ? 'ma-5' : ''"
     >
-      <v-col cols="12" sm="12" md="6">
+      <v-col cols="12" sm="12" md="6" >
         <v-img src="/assets/Image.png" />
+
       </v-col>
-      <v-col class="d-flex justify-center" cols="12" sm="12" md="6">
-        <div>
-          <div class="mt-14 mx-auto">
-            <v-img
-              class="mx-auto"
-              style="max-width: 500px"
-              :style="$vuetify.display.xs ? 'max-width: 350px;' : ''"
-              src="/assets/Image (1).png"
-            />
-          </div>
-          <div class="mt-14 mx-auto">
-            <v-img
-              class="mx-auto"
-              style="max-width: 500px"
-              :style="$vuetify.display.xs ? 'max-width: 350px;' : ''"
-              src="/assets/Image (1).png"
-            />
-          </div>
-        </div>
+      <v-col cols="12" sm="12" md="6" class="justify-end d-flex">
+        <img src="/assets/lem.jpg" style="max-width: 600px"
+               :style="$vuetify.display.xs ? 'max-width: 350px;' : ''" />
       </v-col>
+<!--      <v-col class="d-flex justify-center" cols="12" sm="12" md="6">-->
+<!--        <div>-->
+<!--&lt;!&ndash;          <div class="mt-14 mx-auto">&ndash;&gt;-->
+<!--&lt;!&ndash;            <v-img&ndash;&gt;-->
+<!--&lt;!&ndash;              class="mx-auto"&ndash;&gt;-->
+<!--&lt;!&ndash;              style="max-width: 500px"&ndash;&gt;-->
+<!--&lt;!&ndash;              :style="$vuetify.display.xs ? 'max-width: 350px;' : ''"&ndash;&gt;-->
+<!--&lt;!&ndash;              src="/assets/Image (1).png"&ndash;&gt;-->
+<!--&lt;!&ndash;            />&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--          <div class="mt-14 mx-auto">-->
+<!--            <v-img-->
+<!--              class="mx-auto"-->
+<!--              style="max-width: 500px"-->
+<!--              :style="$vuetify.display.xs ? 'max-width: 350px;' : ''"-->
+<!--             src="/assets/Image.png"-->
+<!--            />-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </v-col>-->
     </v-row>
   </div>
 </template>
