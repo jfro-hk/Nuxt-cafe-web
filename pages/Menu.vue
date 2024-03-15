@@ -38,6 +38,7 @@
                   <div>{{ dish.title }}</div>
                 </div>
                 <div>{{ dish.description }}</div>
+                <div class="text-center">{{ dish.extra_note }}</div>
               </div>
             </v-col>
           </template>
