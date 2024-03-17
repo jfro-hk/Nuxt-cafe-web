@@ -125,7 +125,7 @@ export default {
         const src = iframe.src;
         iframe.src = src + '&autoplay=1';
       }
-    }, 3000);
+    }, 1000);
   }
 
 }

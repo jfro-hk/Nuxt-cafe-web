@@ -16,7 +16,7 @@
     </div>
     <v-row class="pa-15">
       <template v-for="(category, index) in categories" :key="index">
-        <v-col cols="12" md="6" lg="6" v-if="category.menu_id == tab">
+        <v-col cols="12" md="6" lg="6" v-if="category.menu_id == tab && getMenuById(tab).mode !== 'img'">
           <span
             class="heading-3 text-capitalize d-flex justify-center align-center font-c-secondary fs-cursive"
             >{{ category.name }}</span
@@ -43,12 +43,19 @@
             </v-col>
           </template>
         </v-col>
+
       </template>
+      <v-col v-if="getMenuById(tab) && getMenuById(tab).mode == 'img' && getMenuListImage(tab)">
+        <v-img :src="config.cdn+getMenuListImage(tab).img">
+
+        </v-img>
+      </v-col>
     </v-row>
   </v-card>
 </template>
 <script>
 import TopSection from "@/components/TopSection.vue";
+import config from "../config.js";
 
 export default {
   layout: "menu",
@@ -65,8 +72,21 @@ export default {
       tabName: 1,
     };
   },
+  methods:{
+    getMenuById(id){
+     const selected = this.menus.find((menu) => menu.id === id);
+     return selected
+    },
+    getMenuListImage(id){
+     const selected = this.dishes.find((menu) => menu.menu_id === id && menu.img !== null);
+     return selected
+    }
+  },
   async mounted() {},
   computed: {
+    config() {
+      return config
+    },
     tabName() {
       const selectedTab = this.menus.find((tab) => tab.id === this.tab);
       return selectedTab ? selectedTab.title : "Menu";
