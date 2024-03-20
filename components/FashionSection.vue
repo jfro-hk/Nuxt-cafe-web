@@ -12,7 +12,7 @@ defineProps({
     <v-row>
       <v-col cols="12" class="mb-7">
         <div class="d-flex justify-space-between">
-          <div class="heading-2">Seneste begivenheder</div>
+          <div class="heading-2">Begivenheder</div>
         </div>
       </v-col>
       <v-col
