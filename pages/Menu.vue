@@ -45,8 +45,8 @@
         </v-col>
 
       </template>
-      <v-col v-if="getMenuById(tab) && getMenuById(tab).mode == 'img' && getMenuListImage(tab)">
-        <v-img :src="config.cdn+getMenuListImage(tab).img">
+      <v-col v-if="getMenuById(tab) && getMenuById(tab).mode == 'img'">
+        <v-img :src="config.cdn+getMenuById(tab).img">
 
         </v-img>
       </v-col>
@@ -78,7 +78,7 @@ export default {
      return selected
     },
     getMenuListImage(id){
-     const selected = this.dishes.find((menu) => menu.menu_id === id && menu.img !== null);
+     const selected = this.dishes.find((menu) => menu);
      return selected
     }
   },
