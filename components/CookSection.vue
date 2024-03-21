@@ -8,8 +8,7 @@
         :class="$vuetify.display.xs || $vuetify.display.sm ? 'text-center' : ''"
       >
         <p>
-          "Vores retter er inspireret af Italien og lavet både med italiensk
-          importeret lækkerier og gode danske råvarer "
+          "Oplev en skøn smagsoplevelse i hjertet af Nyborg"
         </p>
       </div>
       <img

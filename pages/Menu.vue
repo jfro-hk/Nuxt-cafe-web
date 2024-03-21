@@ -7,7 +7,7 @@
   />
   <v-card class="mb-16" elevation="0">
     <div class="d-flex justify-space-between align-center menu-con-top">
-      <span class="heading-3 text-capitalize">Seneste retter</span>
+      <!-- <span class="heading-3 text-capitalize">Seneste retter</span> -->
       <v-tabs v-model="tab" color="#819d7c" align-tabs="center">
         <v-tab v-for="tabItem in menus" :key="tabItem.id" :value="tabItem.id">{{
           tabItem.title
