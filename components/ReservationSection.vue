@@ -81,7 +81,7 @@ function generateTimeSlots() {
   const today = moment();
   const isToday = moment(form.value.date).isSame(today, "day");
 
-  const startTime = moment().set({ hour: 11, minute: 30, second: 0 }); // Set start time to 11:30 AM
+  const startTime = moment().set({ hour: 9, minute: 30, second: 0 }); // Set start time to 11:30 AM
   const endTime = moment().set({ hour: 22, minute: 0, second: 0 }); // Set end time to 10:00 PM
 
   const timeSlots = [];
@@ -133,12 +133,12 @@ console.log(timeSlots);
       >
         <v-container>
           <v-row>
-            <div class="position-absolute" style="left: calc(100% - 53%);margin-top: 50px;">
+            <div class="position-absolute" v-if="spinner" style="left: calc(100% - 53%);margin-top: 50px;">
 
             <v-progress-circular
               :size="70"
               :width="7"
-              v-if="spinner"
+
               color="#51664e"
               indeterminate
             ></v-progress-circular>
