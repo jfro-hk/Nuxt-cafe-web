@@ -18,13 +18,14 @@
     <!-- Section 2 -->
     <v-row
       class="mt-14 font-c-primary"
+      justify="center"
       :class="$vuetify.display.xs ? 'ma-5' : ''"
     >
       <v-col cols="12" sm="12" md="6">
-        <v-img style="max-width: 600px" max-height="500px" src="/assets/Image.png" />
+        <v-img style="max-width: 600px !important; width: 100%" max-height="500px" src="/assets/Image.png" />
       </v-col>
       <v-col cols="12" sm="12" md="6">
-        <v-img style="max-width: 600px" max-height="500px"  src="/assets/avo.jpg" />
+        <v-img style="max-width: 600px !important; width: 100%" max-height="500px"  src="/assets/avo.jpg" />
       </v-col>
       <!-- <v-col cols="12" sm="12" md="6" class="justify-end d-flex">
         <img

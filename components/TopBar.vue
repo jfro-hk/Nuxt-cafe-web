@@ -10,10 +10,10 @@ defineProps({
 <template>
   <div
     v-if="$vuetify.display.xs || $vuetify.display.sm"
-    class="d-flex justify-space-between topBar pa-7"
+    class="d-flex justify-space-between align-center topBar pa-7"
     :class="img"
-  >
-    <div>
+   >
+    <div class="d-flex align-center">
       <span class="heading-5 font-c-primary fs-cursive"></span>
       <img src="/assets/Apoli.png" alt="logo" width="100px" />
 
@@ -86,9 +86,9 @@ defineProps({
       >
     </div>
   </div>
-  <div v-else class="d-flex justify-space-between font-c-primary" :class="img">
+  <div v-else class="d-flex justify-space-between align-center font-c-primary" :class="img">
     <div class="d-flex mt-5 justify-space-between align-center w-100 mb-5">
-      <div class="ml-11">
+      <div class="ml-11 mt-4">
         <span class="heading-5 fs-cursive"></span>
         <img src="/assets/Apoli.png" alt="logo" width="100px" />
 

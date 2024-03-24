@@ -40,8 +40,8 @@ let spinner = ref(false);
 function postData() {
   spinner.value = true;
   loading.value = false;
+  if (form.value.fullname != null && form.value.time && form.value.antal) {
   setTimeout(function () {
-    if (form.value.fullname != null && form.value.time && form.value.antal) {
       api
         .post(
           "/make-res/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK",
@@ -59,8 +59,12 @@ function postData() {
           loading.value = true;
           message.value = "An error occurred while making the reservation.";
         });
-    }
-  }, 3000);
+
+  }, 1000);
+  }else {
+    spinner.value = false;
+    loading.value = false;
+  }
 }
 
 const formatedDate = () => {
@@ -129,15 +133,17 @@ console.log(timeSlots);
       >
         <v-container>
           <v-row>
+            <div class="position-absolute" style="left: calc(100% - 53%);margin-top: 50px;">
+
             <v-progress-circular
-              style="right: 47%; top: 65%"
-              class="position-absolute"
               :size="70"
               :width="7"
               v-if="spinner"
-              color="#0e0f3d"
+              color="#51664e"
               indeterminate
             ></v-progress-circular>
+            </div>
+
             <v-col cols="12" v-if="loading">
               <div class="alert" :class="message === 204 ? 'err' : ' succ'">
                 <span
@@ -182,7 +188,7 @@ console.log(timeSlots);
                 <v-menu ref="menu" :close-on-content-click="true">
                   <template v-slot:activator="{ props }">
                     <v-text-field
-                      placeholder="Fulde navn"
+                      placeholder="Dato"
                       readonly
                       v-bind="props"
                       :model-value="formatedDate()"

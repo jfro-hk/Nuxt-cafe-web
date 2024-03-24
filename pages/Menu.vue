@@ -46,9 +46,9 @@
 
       </template>
       <v-col v-if="getMenuById(tab) && getMenuById(tab).mode == 'img'">
-        <v-img :src="config.cdn+getMenuById(tab).img">
-
-        </v-img>
+        <div class="d-flex justify-center">
+        <v-img max-width="1000" :src="config.cdn+getMenuById(tab).img"/>
+        </div>
       </v-col>
     </v-row>
   </v-card>
