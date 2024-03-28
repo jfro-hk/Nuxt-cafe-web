@@ -1,22 +1,29 @@
 <script setup>
-import { ref } from "vue";
-import { useApi } from "../api.js";
+import {ref} from "vue";
+import {useApi} from "../api.js";
 import moment from "moment";
-
+import Table from "@/components/tables/table.vue";
+defineProps({
+  settings:Array
+})
 const valid = false;
 const form = ref({
   fullname: null,
-  date: new Date(),
+  date: null,
   time: null,
   antal: null,
   description: null,
+  table: {
+    type: null,
+    key: null
+  },
 });
-const rules = {
-  fullname: [(v) => !!v || "Navn er påkrævet"],
+const rules = computed(() => ({
+  fullname: [ !!form.value.fullname || "Navn er påkrævet"],
   time: [(v) => !!v || "Tid er påkrævet"],
   antal: [(v) => !!v || "Antal er påkrævet"],
   description: [(v) => !!v || "Beskrivelse er påkrævet"],
-};
+}));
 
 const allowedDates = computed(() => {
   return (date) => {
@@ -37,31 +44,43 @@ const api = useApi();
 let message = ref();
 let loading = ref(false);
 let spinner = ref(false);
+let step = ref(1);
+const tables = ref(null)
+
+function getTables(date,time){
+  api.get(`/get-tables/${moment(date).format('YYYY-MM-DD')}/${time}/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK`)
+      .then(function (response) {
+    console.log(response.data);
+    tables.value = response.data;
+  })
+}
 function postData() {
   spinner.value = true;
   loading.value = false;
-  if (form.value.fullname != null && form.value.time && form.value.antal) {
-  setTimeout(function () {
+  if (form.value.fullname != null
+      && form.value.time
+      && form.value.antal
+      && form.value.table) {
+    setTimeout(function () {
       api
-        .post(
-          "/make-res/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK",
-          form.value
-        )
-        .then(function (response) {
-          console.log(response.data); // Logging response data
-          spinner.value = false;
-          loading.value = true;
-          message.value = response.data;
-        })
-        .catch(function (error) {
-          console.error("Error:", error);
-          spinner.value = false;
-          loading.value = true;
-          message.value = "An error occurred while making the reservation.";
-        });
+          .post(
+              "/make-res/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK",
+              form.value
+          )
+          .then(function (response) {
+            spinner.value = false;
+            loading.value = true;
+            message.value = response.data;
+          })
+          .catch(function (error) {
+            console.error("Error:", error);
+            spinner.value = false;
+            loading.value = true;
+            message.value = "An error occurred while making the reservation.";
+          });
 
-  }, 1000);
-  }else {
+    }, 1000);
+  } else {
     spinner.value = false;
     loading.value = false;
   }
@@ -70,6 +89,7 @@ function postData() {
 const formatedDate = () => {
   return moment(form.value.date).format("DD/MM/YYYY");
 };
+
 function closeAlert() {
   loading.value = false;
   form.value.fullname = null;
@@ -77,12 +97,13 @@ function closeAlert() {
   form.value.antal = null;
   form.value.description = null;
 }
+
 function generateTimeSlots() {
   const today = moment();
   const isToday = moment(form.value.date).isSame(today, "day");
 
-  const startTime = moment().set({ hour: 9, minute: 30, second: 0 }); // Set start time to 11:30 AM
-  const endTime = moment().set({ hour: 22, minute: 0, second: 0 }); // Set end time to 10:00 PM
+  const startTime = moment().set({hour: 9, minute: 30, second: 0}); // Set start time to 11:30 AM
+  const endTime = moment().set({hour: 22, minute: 0, second: 0}); // Set end time to 10:00 PM
 
   const timeSlots = [];
   let currentTime = moment(startTime);
@@ -116,8 +137,12 @@ console.log(timeSlots);
 
 <template>
   <div
-    class="container-space font font-c-secondary pt-16 pb-16 text-center bg-primary"
+      class="container-space font font-c-secondary pt-16 pb-16 text-center bg-primary"
   >
+    {{form}}
+<!--    <div v-for="(item,index) in settings.tables" :key="index">-->
+<!--      {{item}}-->
+<!--    </div>-->
     <div class="heading-2">Foretag en reservation</div>
     <div class="text-grey-darken-1">
       📞 Klar til at begive sig ud på et kulinarisk eventyr? Foretag din
@@ -127,114 +152,187 @@ console.log(timeSlots);
     </div>
     <div class="mt-10" :class="$vuetify.display.xs ? 'ma-10' : ''">
       <v-form
-        validate-on="submit lazy"
-        @submit.prevent="postData"
-        v-model="valid"
+          validate-on="submit lazy"
+          @submit.prevent="postData"
+          v-model="valid"
       >
         <v-container>
           <v-row>
             <div class="position-absolute" v-if="spinner" style="left: calc(100% - 53%);margin-top: 50px;">
 
-            <v-progress-circular
-              :size="70"
-              :width="7"
-
-              color="#51664e"
-              indeterminate
-            ></v-progress-circular>
+              <v-progress-circular
+                  :size="70"
+                  :width="7"
+                  color="#51664e"
+                  indeterminate
+              ></v-progress-circular>
             </div>
 
             <v-col cols="12" v-if="loading">
               <div class="alert" :class="message === 204 ? 'err' : ' succ'">
                 <span
-                  @click="closeAlert()"
-                  class="closebtn"
-                  onclick="this.parentElement.style.display='none';"
-                  >&times;</span
+                    @click="closeAlert()"
+                    class="closebtn"
+                    onclick="this.parentElement.style.display='none';"
+                >&times;</span
                 >
 
                 <strong>{{ message === 204 ? "Failed" : "Success" }}</strong>
                 {{
                   message === 204
-                    ? "Restauranten er fuld"
-                    : "Reservationen blev gennemført med succes"
+                      ? "Restauranten er fuld"
+                      : "Reservationen blev gennemført med succes"
                 }}
               </div>
             </v-col>
-            <template v-if="!loading">
-              <v-col cols="12" md="6">
+            <template v-if="!loading && step == 2">
+              <v-col cols="12">
                 <v-text-field
-                  :rules="rules.fullname"
-                  v-model="form.fullname"
-                  placeholder="fulde navn"
-                  variant="outlined"
-                  required
+                    :rules="rules.fullname"
+                    v-model="form.fullname"
+                    placeholder="fulde navn"
+                    variant="outlined"
+                    hide-details="auto"
+                    required
                 ></v-text-field>
               </v-col>
 
               <v-col cols="12" md="6">
                 <v-select
-                  placeholder="Valgte tid"
-                  dense
-                  :rules="rules.time"
-                  v-model="form.time"
-                  :items="timeSlots"
-                  item-title="text"
-                  item-value="value"
-                  variant="outlined"
+                    placeholder="Valgte tid"
+                    dense
+                    hide-details="auto"
+                    :rules="rules.time"
+                    v-model="form.time"
+                    :items="timeSlots"
+                    item-title="text"
+                    item-value="value"
+                    variant="outlined"
                 ></v-select>
               </v-col>
-              <v-col cols="12" md="6">
-                <v-menu ref="menu" :close-on-content-click="true">
-                  <template v-slot:activator="{ props }">
-                    <v-text-field
-                      placeholder="Dato"
-                      readonly
-                      v-bind="props"
-                      :model-value="formatedDate()"
-                      variant="outlined"
-                      required
-                    ></v-text-field>
-                  </template>
+              <!--              <v-col cols="12" md="6">-->
+              <!--                <v-menu ref="menu" :close-on-content-click="true">-->
+              <!--                  <template v-slot:activator="{ props }">-->
+              <!--                    <v-text-field-->
+              <!--                        placeholder="Dato"-->
+              <!--                        readonly-->
+              <!--                        v-bind="props"-->
+              <!--                        :model-value="formatedDate()"-->
+              <!--                        variant="outlined"-->
+              <!--                        required-->
+              <!--                    ></v-text-field>-->
+              <!--                  </template>-->
 
-                  <v-date-picker
-                    v-model="form.date"
-                    :max-width="$vuetify.display.width < 300 ? 250 : 380"
-                    color="#819d7c"
-                    :allowed-dates="allowedDates"
-                  ></v-date-picker>
-                </v-menu>
-              </v-col>
+              <!--                  <v-date-picker-->
+              <!--                      v-model="form.date"-->
+              <!--                      :max-width="$vuetify.display.width < 300 ? 250 : 380"-->
+              <!--                      color="#819d7c"-->
+              <!--                      :allowed-dates="allowedDates"-->
+              <!--                  ></v-date-picker>-->
+              <!--                </v-menu>-->
+              <!--              </v-col>-->
               <v-col cols="12" md="6">
                 <v-select
-                  :rules="rules.antal"
-                  placeholder="Samlet antal personer"
-                  v-model="form.antal"
-                  :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']"
-                  variant="outlined"
+                    :rules="rules.antal"
+                    placeholder="Samlet antal personer"
+                    v-model="form.antal"
+                    :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']"
+                    variant="outlined"
                 ></v-select>
               </v-col>
               <v-col cols="12">
                 <v-textarea
-                  placeholder="Tilføj en note"
-                  variant="outlined"
-                  v-model="form.description"
+                    hide-details="auto"
+                    placeholder="Tilføj en note"
+                    variant="outlined"
+                    v-model="form.description"
                 ></v-textarea>
               </v-col>
             </template>
+            <v-col cols="12" v-if="step == 1">
+              <v-date-picker
+                  ref="datePicker"
+                  next-icon=">"
+                  :allowed-dates="allowedDates"
+                  :min="new Date()"
+                  :max="new Date(new Date().setDate(new Date().getDate() + 30))"
+                  v-model="form.date"/>
+            </v-col>
+            <v-col cols="12" v-if="step == 3">
+              {{tables}}
+              <div class="d-flex align-center justify-center ga-4 w-100"
+                   :class="$vuetify.display.width <  860? 'flex-column':''">
+                <div v-for="(table,index) in tables" :key="index">
+                <span  v-if="table.total != 0" class="total">{{table.total}}</span>
+                <Table class="cursor-pointer"
+                       v-if="table.total != 0"
+                       @click="form.table.type = table.type;form.table.key = index"
+                       :class="form.table.type == table.type
+                       && form.table.key == index ? 'selected-table':''"
+                       :total="table.total"
+                       :type="table.type.includes('c')?'c':'s'"
+                       :size="table.type.includes('2')?'s':''"
+                       :antal="table.number"/>
+                <!--                <Table :class="form.table == 't4s' ? 'selected-table':''" @click="form.table = 't4s'" :antal="4"/>-->
+                <!--                <Table size="s" :class="form.table == 't2s' ? 'selected-table':''" @click="form.table = 't2s'" :antal="2"/>-->
+              </div>
+              </div>
+            </v-col>
           </v-row>
           <div class="mt-8">
             <!--            <reservation-btn/>-->
-            <v-btn
-              v-if="!loading"
-              :disabled="spinner"
-              type="submit"
-              class="text-none"
-              color="#819d7c"
-              variant="flat"
-            >
-              Book Nu</v-btn
-            >
+
+            <div class="d-flex align-center justify-space-between w-100">
+              <span v-if="step == 1"></span>
+              <v-btn
+                  v-if="!loading && step != 1"
+                  @click="step--"
+                  class="text-none"
+                  color="#819d7c"
+                  variant="flat"
+              >
+                Previous
+              </v-btn>
+<!--              //next btn step 1-->
+              <v-btn
+                  v-if="!loading && step == 1"
+                  @click="step++"
+                  class="text-none"
+                  color="#819d7c"
+                  variant="flat"
+                  :disabled="!form.date"
+              >
+                Next
+              </v-btn
+              >
+              <!--              //next btn step 2-->
+              <v-btn
+                  v-if="!loading && step == 2"
+                  @click="step++; getTables(form.date,form.time)"
+                  class="text-none"
+                  color="#819d7c"
+                  variant="flat"
+                  :disabled="
+                   !form.fullname
+                  || !form.time
+                  || !form.antal"
+              >
+                Next
+              </v-btn
+              >
+
+              <v-btn
+                  v-if="!loading && step == 3"
+                  :disabled="spinner || !form.table.type"
+                  type="submit"
+                  class="text-none"
+                  color="#819d7c"
+                  variant="flat"
+              >
+                Submit
+              </v-btn
+              >
+            </div>
           </div>
         </v-container>
       </v-form>
@@ -243,23 +341,31 @@ console.log(timeSlots);
 </template>
 
 <style lang="scss">
+.selected-table {
+  border: 12px solid #358050;
+}
+
 .customClass .vuejs3-datepicker__inputvalue {
   padding-top: 14px;
   padding-bottom: 14px;
   border: 1px solid dimgrey;
   width: 100%;
 }
+
 .alert {
   padding: 20px;
 
   color: white;
 }
+
 .succ {
   background-color: #18ad1b !important;
 }
+
 .err {
   background-color: #f44336 !important;
 }
+
 .closebtn {
   margin-left: 15px;
   color: #819d7c;
@@ -274,4 +380,70 @@ console.log(timeSlots);
 .closebtn:hover {
   color: #819d7c;
 }
+
+.v-date-picker-month__day--selected .v-btn {
+  background-color: #819d7c;
+}
+
+.v-date-picker-month__day--selected .v-btn__content {
+  color: #fff !important;
+}
+
+.v-date-picker div:first-child .v-picker-title,
+.v-date-picker div:first-child .v-picker__header {
+  display: none !important;
+
+}
+
+.v-date-picker {
+  width: 435px;
+}
+
+.v-date-picker-controls__date {
+  margin-inline-end: 4px;
+  font-size: 1rem;
+  font-weight: 600 !important;
+
+}
+
+.v-btn--icon {
+  border-radius: 50%;
+  min-width: 0;
+  width: 40px;
+  height: 40px !important;
+  padding: unset !important;
+}
+
+.v-date-picker-month__day {
+
+
+}
+
+.v-picker.v-sheet {
+  width: 100%;
+}
+
+.v-date-picker-month__day .v-btn--variant-outlined {
+  background-color: #819d7c;
+  color: #819d7c;
+  border-radius: 50%;
+
+
+}
+
+.v-date-picker-month__day .v-btn__content {
+  color: #d0d9ce;
+}
+
+/* EDITABLE */
+/*
+.v-date-picker-month {
+  display: flex;
+  justify-content: center;
+  min-width: 388px;
+  --v-date-picker-month-day-diff: 4px;
+}
+.v-date-picker-month {
+  padding: 0 14px 12px;
+}*/
 </style>

@@ -34,7 +34,7 @@
         <!--        </div>-->
         <!--        mt-10 mt-lg-7 mt-md-7-->
         <top-bar :pages="pages" @sidebar="(val)=>{ drawer = !val}" class="position-fixed w-100 " style="z-index: 2"/>
-        <NuxtPage :opening-times="settings.data" :gallery="gallery.data" :dishes="dishes.data" :menus="menus.data" :categories="categories.data" class="mt-16"/>
+        <NuxtPage :settings="settings.data" :gallery="gallery.data" :dishes="dishes.data" :menus="menus.data" :categories="categories.data" class="mt-16"/>
         <FooterSection/>
       </v-main>
 

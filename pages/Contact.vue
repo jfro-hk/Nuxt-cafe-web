@@ -106,7 +106,7 @@
                 placeholder="Fulde navn"
                 variant="outlined"
                 required
-                hide-details
+                hide-details="auto"
               />
             </v-col>
             <v-col cols="12" md="6">
@@ -114,14 +114,14 @@
                 placeholder="Email"
                 variant="outlined"
                 required
-                hide-details
+                hide-details="auto"
               />
             </v-col>
             <v-col cols="12">
               <v-textarea
                 variant="outlined"
                 required
-                hide-details
+                hide-details="auto"
                 placeholder="Fortæl os!"
               >
               </v-textarea>
