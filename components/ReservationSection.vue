@@ -70,6 +70,7 @@ function postData() {
           .then(function (response) {
             spinner.value = false;
             loading.value = true;
+            step.value = 1
             message.value = response.data;
           })
           .catch(function (error) {
@@ -136,10 +137,7 @@ console.log(timeSlots);
 </script>
 
 <template>
-  <div
-      class="container-space font font-c-secondary pt-16 pb-16 text-center bg-primary"
-  >
-    {{form}}
+  <div class="container-space font font-c-secondary pt-16 pb-16 text-center bg-primary">
 <!--    <div v-for="(item,index) in settings.tables" :key="index">-->
 <!--      {{item}}-->
 <!--    </div>-->
@@ -173,16 +171,9 @@ console.log(timeSlots);
                 <span
                     @click="closeAlert()"
                     class="closebtn"
-                    onclick="this.parentElement.style.display='none';"
-                >&times;</span
-                >
-
+                    onclick="this.parentElement.style.display='none';">&times;</span>
                 <strong>{{ message === 204 ? "Failed" : "Success" }}</strong>
-                {{
-                  message === 204
-                      ? "Restauranten er fuld"
-                      : "Reservationen blev gennemført med succes"
-                }}
+                {{message === 204 ? "Restauranten er fuld" : "Reservationen blev gennemført med succes" }}
               </div>
             </v-col>
             <template v-if="!loading && step == 2">
@@ -249,17 +240,17 @@ console.log(timeSlots);
                 ></v-textarea>
               </v-col>
             </template>
-            <v-col cols="12" v-if="step == 1">
+            <v-col cols="12" v-if="step == 1 && !loading">
               <v-date-picker
                   ref="datePicker"
-                  next-icon=">"
+                  next-icon=""
                   :allowed-dates="allowedDates"
                   :min="new Date()"
                   :max="new Date(new Date().setDate(new Date().getDate() + 30))"
                   v-model="form.date"/>
             </v-col>
-            <v-col cols="12" v-if="step == 3">
-              {{tables}}
+            <v-col cols="12" v-if="step == 3 && !loading">
+<!--              {{tables}}-->
               <div class="d-flex align-center justify-center ga-4 w-100"
                    :class="$vuetify.display.width <  860? 'flex-column':''">
                 <div v-for="(table,index) in tables" :key="index">
@@ -273,15 +264,12 @@ console.log(timeSlots);
                        :type="table.type.includes('c')?'c':'s'"
                        :size="table.type.includes('2')?'s':''"
                        :antal="table.number"/>
-                <!--                <Table :class="form.table == 't4s' ? 'selected-table':''" @click="form.table = 't4s'" :antal="4"/>-->
-                <!--                <Table size="s" :class="form.table == 't2s' ? 'selected-table':''" @click="form.table = 't2s'" :antal="2"/>-->
               </div>
               </div>
             </v-col>
           </v-row>
           <div class="mt-8">
-            <!--            <reservation-btn/>-->
-
+            <!--<reservation-btn/>-->
             <div class="d-flex align-center justify-space-between w-100">
               <span v-if="step == 1"></span>
               <v-btn
@@ -293,7 +281,7 @@ console.log(timeSlots);
               >
                 Previous
               </v-btn>
-<!--              //next btn step 1-->
+              <!--//next btn step 1-->
               <v-btn
                   v-if="!loading && step == 1"
                   @click="step++"
@@ -305,7 +293,7 @@ console.log(timeSlots);
                 Next
               </v-btn
               >
-              <!--              //next btn step 2-->
+              <!-- // next btn step 2-->
               <v-btn
                   v-if="!loading && step == 2"
                   @click="step++; getTables(form.date,form.time)"
@@ -318,9 +306,7 @@ console.log(timeSlots);
                   || !form.antal"
               >
                 Next
-              </v-btn
-              >
-
+              </v-btn>
               <v-btn
                   v-if="!loading && step == 3"
                   :disabled="spinner || !form.table.type"
@@ -413,10 +399,12 @@ console.log(timeSlots);
   height: 40px !important;
   padding: unset !important;
 }
-
+.v-date-picker-month {
+  min-width: 290px;
+}
 .v-date-picker-month__day {
-
-
+  height: 48px;
+  width: 39px;
 }
 
 .v-picker.v-sheet {
