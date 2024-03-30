@@ -5,7 +5,7 @@
       <CookSection />
       <ReservationSection id="reservation" :settings="settings" />
       <FashionSection
-          v-if="gallery.length > 0"
+          v-if="gallery && gallery.length > 0"
         class="mt-12 mt-md-0 mt-lg-0"
         :gallery="gallery"
         :class="$vuetify.display.xs ? 'ma-10' : ''"

@@ -1,10 +1,11 @@
 <script setup>
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import {useApi} from "../api.js";
 import moment from "moment";
 import Table from "@/components/tables/table.vue";
+
 defineProps({
-  settings:Array
+  settings: Array
 })
 const valid = false;
 const form = ref({
@@ -19,7 +20,7 @@ const form = ref({
   },
 });
 const rules = computed(() => ({
-  fullname: [ !!form.value.fullname || "Navn er påkrævet"],
+  fullname: [!!form.value.fullname || "Navn er påkrævet"],
   time: [(v) => !!v || "Tid er påkrævet"],
   antal: [(v) => !!v || "Antal er påkrævet"],
   description: [(v) => !!v || "Beskrivelse er påkrævet"],
@@ -39,7 +40,12 @@ const allowedDates = computed(() => {
     return !isMonday && !isPast;
   };
 });
-
+let callUs = ref(false)
+watch(form.value, (newVal) => {
+  if (newVal.antal >= 5) {
+    callUs.value = true
+  }
+});
 const api = useApi();
 let message = ref();
 let loading = ref(false);
@@ -47,13 +53,14 @@ let spinner = ref(false);
 let step = ref(1);
 const tables = ref(null)
 
-function getTables(date,time){
+function getTables(date, time) {
   api.get(`/get-tables/${moment(date).format('YYYY-MM-DD')}/${time}/$2a$12$cAZSHYq3zV0CbnaolVBMJeTRTPpBTKbiQSFMRKkU2WrAHQD4KiSeK`)
       .then(function (response) {
-    console.log(response.data);
-    tables.value = response.data;
-  })
+        console.log(response.data);
+        tables.value = response.data;
+      })
 }
+
 function postData() {
   spinner.value = true;
   loading.value = false;
@@ -97,6 +104,7 @@ function closeAlert() {
   form.value.time = null;
   form.value.antal = null;
   form.value.description = null;
+  form.value.table = null;
 }
 
 function generateTimeSlots() {
@@ -137,10 +145,44 @@ console.log(timeSlots);
 </script>
 
 <template>
+  <v-dialog class="callus-dialog" v-model="callUs">
+    <v-row justify="center">
+      <v-card elevation="0" width="500" height="300" class="callUs-card bg-primary">
+        <v-btn style="position: absolute;right: 15px;top: 15px;" icon elevation="0" size="small" @click="callUs = false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M18.711 5.29289C19.1015 5.68342 19.1015 6.31658 18.711 6.70711L6.71101 18.7071C6.32049 19.0976 5.68732 19.0976 5.2968 18.7071C4.90628 18.3166 4.90628 17.6834 5.2968 17.2929L17.2968 5.29289C17.6873 4.90237 18.3205 4.90237 18.711 5.29289Z"
+                  fill="#8C8B91"/>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M5.2968 5.29289C5.68732 4.90237 6.32049 4.90237 6.71101 5.29289L18.711 17.2929C19.1015 17.6834 19.1015 18.3166 18.711 18.7071C18.3205 19.0976 17.6873 19.0976 17.2968 18.7071L5.2968 6.70711C4.90628 6.31658 4.90628 5.68342 5.2968 5.29289Z"
+                  fill="#8C8B91"/>
+          </svg>
+        </v-btn>
+        <v-row align="center" justify="center" class="fill-height"> <!-- Added align and justify center -->
+          <v-col>
+            <div class="d-flex flex-column ga-2 pa-5 justify-center">
+            <div class="d-flex justify-center">
+              <a href="tel:+45 53 34 54 66" class="text-decoration-none">
+            <img width="50" src="/assets/callUs.gif">
+              </a>
+             </div>
+              <a href="tel:+45 53 34 54 66" class="text-decoration-none font-c-primary-2 text-center">
+                +45 53 34 54 66
+              </a>
+              <p class="text-center font-c-primary-2">
+
+                Hvis I er mere end 4 personer, bedes I kontakte os.
+              </p>
+            </div>
+
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-row>
+  </v-dialog>
+
   <div class="container-space font font-c-secondary pt-16 pb-16 text-center bg-primary">
-<!--    <div v-for="(item,index) in settings.tables" :key="index">-->
-<!--      {{item}}-->
-<!--    </div>-->
+
     <div class="heading-2">Foretag en reservation</div>
     <div class="text-grey-darken-1">
       📞 Klar til at begive sig ud på et kulinarisk eventyr? Foretag din
@@ -173,7 +215,7 @@ console.log(timeSlots);
                     class="closebtn"
                     onclick="this.parentElement.style.display='none';">&times;</span>
                 <strong>{{ message === 204 ? "Failed" : "Success" }}</strong>
-                {{message === 204 ? "Restauranten er fuld" : "Reservationen blev gennemført med succes" }}
+                {{ message === 204 ? "Restauranten er fuld" : "Reservationen blev gennemført med succes" }}
               </div>
             </v-col>
             <template v-if="!loading && step == 2">
@@ -250,21 +292,21 @@ console.log(timeSlots);
                   v-model="form.date"/>
             </v-col>
             <v-col cols="12" v-if="step == 3 && !loading">
-<!--              {{tables}}-->
+              <!--              {{tables}}-->
               <div class="d-flex align-center justify-center ga-4 w-100"
                    :class="$vuetify.display.width <  860? 'flex-column':''">
                 <div v-for="(table,index) in tables" :key="index">
-                <span  v-if="table.total != 0" class="total">{{table.total}}</span>
-                <Table class="cursor-pointer"
-                       v-if="table.total != 0"
-                       @click="form.table.type = table.type;form.table.key = index"
-                       :class="form.table.type == table.type
+                  <span v-if="table.total != 0" class="total">{{ table.total }}</span>
+                  <Table class="cursor-pointer"
+                         v-if="table.total != 0"
+                         @click="form.table.type = table.type;form.table.key = index"
+                         :class="form.table.type == table.type
                        && form.table.key == index ? 'selected-table':''"
-                       :total="table.total"
-                       :type="table.type.includes('c')?'c':'s'"
-                       :size="table.type.includes('2')?'s':''"
-                       :antal="table.number"/>
-              </div>
+                         :total="table.total"
+                         :type="table.type.includes('c')?'c':'s'"
+                         :size="table.type.includes('2')?'s':''"
+                         :antal="table.number"/>
+                </div>
               </div>
             </v-col>
           </v-row>
@@ -303,7 +345,7 @@ console.log(timeSlots);
                   :disabled="
                    !form.fullname
                   || !form.time
-                  || !form.antal"
+                  || !form.antal || form.antal > 4"
               >
                 Next
               </v-btn>
@@ -399,9 +441,11 @@ console.log(timeSlots);
   height: 40px !important;
   padding: unset !important;
 }
+
 .v-date-picker-month {
   min-width: 290px;
 }
+
 .v-date-picker-month__day {
   height: 48px;
   width: 39px;

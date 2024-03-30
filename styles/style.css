@@ -26,3 +26,9 @@ background:  #819d7c;
     color: #fff;
 }
 
+.callUs-card{
+    border: 3px solid #819d7c;
+}
+.callus-dialog.v-overlay  .v-overlay__scrim{
+    background: unset !important;
+}

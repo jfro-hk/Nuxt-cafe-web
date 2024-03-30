@@ -7,12 +7,21 @@
   /*font-family: "Rufina";*/
   font-family: sans-serif;
 }
-.v-overlay .v-overlay__scrim{
+.videoWrapper.v-overlay .v-overlay__scrim{
   background: #060101 !important;
   opacity: unset !important;
 }
+.callUs-card{
+  border: 3px solid #819d7c !important;
+}
+.callus-dialog .v-overlay__scrim{
+  background: unset !important;
+}
 .font-c-primary{
   color: #fff !important;
+}
+.font-c-primary-2{
+  color: #819d7c !important;
 }
 .text-secondary{
   color: #000 !important;
@@ -495,3 +504,4 @@ width: 300px;
 height: 200px !important;
 }
 }
+
