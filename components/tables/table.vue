@@ -1,8 +1,9 @@
 <template>
-
-
+  <!--  <div style="background: #0000001a "></div>-->
   <div class="dot"
-       :style="size == 's' ? 'width: 150px;':'width: 200px;'"
+       :style="size == 's' ? disable? 'background: #0000001a !important;; width: 150px;':'width: 150px;'
+       :disable?'width: 200px;background: #0000001a !important;'
+       :'width: 200px;'"
        :class="type == 'c'?'border-r-c':''">
     <!--    <span class="total">{{total}}</span>-->
     <span class="number">{{ antal }}</span>
@@ -11,6 +12,7 @@
 <script>
 export default {
   props: {
+    disable: Boolean,
     total: Number,
     type: String,
     size: String,

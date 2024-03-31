@@ -104,7 +104,8 @@ function closeAlert() {
   form.value.time = null;
   form.value.antal = null;
   form.value.description = null;
-  form.value.table = null;
+  form.value.table.type = null;
+  form.value.table.key = null;
 }
 
 function generateTimeSlots() {
@@ -148,7 +149,8 @@ console.log(timeSlots);
   <v-dialog class="callus-dialog" v-model="callUs">
     <v-row justify="center">
       <v-card elevation="0" width="500" height="300" class="callUs-card bg-primary">
-        <v-btn style="position: absolute;right: 15px;top: 15px;" icon elevation="0" size="small" @click="callUs = false">
+        <v-btn style="position: absolute;right: 15px;top: 15px;" icon elevation="0" size="small"
+               @click="callUs = false">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M18.711 5.29289C19.1015 5.68342 19.1015 6.31658 18.711 6.70711L6.71101 18.7071C6.32049 19.0976 5.68732 19.0976 5.2968 18.7071C4.90628 18.3166 4.90628 17.6834 5.2968 17.2929L17.2968 5.29289C17.6873 4.90237 18.3205 4.90237 18.711 5.29289Z"
@@ -161,11 +163,11 @@ console.log(timeSlots);
         <v-row align="center" justify="center" class="fill-height"> <!-- Added align and justify center -->
           <v-col>
             <div class="d-flex flex-column ga-2 pa-5 justify-center">
-            <div class="d-flex justify-center">
-              <a href="tel:+45 53 34 54 66" class="text-decoration-none">
-            <img width="50" src="/assets/callUs.gif">
-              </a>
-             </div>
+              <div class="d-flex justify-center">
+                <a href="tel:+45 53 34 54 66" class="text-decoration-none">
+                  <img width="50" src="/assets/callUs.gif">
+                </a>
+              </div>
               <a href="tel:+45 53 34 54 66" class="text-decoration-none font-c-primary-2 text-center">
                 +45 53 34 54 66
               </a>
@@ -291,24 +293,48 @@ console.log(timeSlots);
                   :max="new Date(new Date().setDate(new Date().getDate() + 30))"
                   v-model="form.date"/>
             </v-col>
-            <v-col cols="12" v-if="step == 3 && !loading">
-              <!--              {{tables}}-->
+            <v-col cols="12" v-if="step === 3 && !loading">
               <div class="d-flex align-center justify-center ga-4 w-100"
-                   :class="$vuetify.display.width <  860? 'flex-column':''">
-                <div v-for="(table,index) in tables" :key="index">
-                  <span v-if="table.total != 0" class="total">{{ table.total }}</span>
+                   :class="$vuetify.display.width < 860 ? 'flex-column' : ''">
+                <div v-for="(table, index) in tables" :key="index">
+                  <div v-if="table.total > 0">
+
+                    <span class="total" v-if="form.antal > 2 && table.type != 't2s'">{{ table.total }}</span>
+                    <span class="total" v-if="form.antal == 2 ||form.antal == 1">{{ table.total }}</span>
+                  </div>
                   <Table class="cursor-pointer"
-                         v-if="table.total != 0"
-                         @click="form.table.type = table.type;form.table.key = index"
-                         :class="form.table.type == table.type
-                       && form.table.key == index ? 'selected-table':''"
+                         v-if="table.total > 0 && form.antal <= 2"
+                         @click="form.table.type = table.type; form.table.key = index"
+                         :class="{ 'selected-table': form.table.type === table.type && form.table.key === index }"
                          :total="table.total"
-                         :type="table.type.includes('c')?'c':'s'"
-                         :size="table.type.includes('2')?'s':''"
-                         :antal="table.number"/>
+                         :type="table.type.includes('c') ? 'c' : 's'"
+                         :size="table.type.includes('2') ? 's' : ''"
+                         :antal="table.number" />
+                  <Table class="cursor-pointer"
+                         v-if="table.total > 0 && form.antal > 2 && table.type.includes('4')"
+                         @click="form.table.type = table.type; form.table.key = index"
+                         :class="{ 'selected-table': form.table.type === table.type && form.table.key === index }"
+                         :total="table.total"
+                         :type="table.type.includes('c') ? 'c' : 's'"
+                         :antal="table.number" />
+                  <div v-if="table.total < 1">
+                    <div>
+                      <a href="tel:+45 53 34 54 66" class="text-decoration-none">
+                        <img width="50" src="/assets/callUs.gif">
+                        <v-tooltip activator="parent" location="end">kontakte os</v-tooltip>
+                      </a>
+                    </div>
+                    <Table class="cursor-pointer"
+                           :disable="true"
+                           :total="table.total"
+                           :type="table.type.includes('c') ? 'c' : 's'"
+                           :size="table.type.includes('2') ? 's' : ''"
+                           :antal="table.number" />
+                  </div>
                 </div>
               </div>
             </v-col>
+
           </v-row>
           <div class="mt-8">
             <!--<reservation-btn/>-->
@@ -326,7 +352,7 @@ console.log(timeSlots);
               <!--//next btn step 1-->
               <v-btn
                   v-if="!loading && step == 1"
-                  @click="step++"
+                  @click="step = 2"
                   class="text-none"
                   color="#819d7c"
                   variant="flat"
@@ -338,7 +364,7 @@ console.log(timeSlots);
               <!-- // next btn step 2-->
               <v-btn
                   v-if="!loading && step == 2"
-                  @click="step++; getTables(form.date,form.time)"
+                  @click="step = 3; getTables(form.date,form.time)"
                   class="text-none"
                   color="#819d7c"
                   variant="flat"
