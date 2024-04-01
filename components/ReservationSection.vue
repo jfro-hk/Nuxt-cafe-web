@@ -287,7 +287,6 @@ console.log(timeSlots);
             <v-col cols="12" v-if="step == 1 && !loading">
               <v-date-picker
                   ref="datePicker"
-                  next-icon=""
                   :allowed-dates="allowedDates"
                   :min="new Date()"
                   :max="new Date(new Date().setDate(new Date().getDate() + 30))"

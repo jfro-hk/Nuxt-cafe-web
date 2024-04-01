@@ -2,7 +2,7 @@
 
 <template>
   <div class="container-space font text-secondary bg-sec-primary">
-    <div class="d-flex justify-space-between w-100 align-center pa-3">
+    <div class="d-flex justify-space-between w-100 align-center pa-16">
       <div
         class="heading-2"
         :class="$vuetify.display.xs || $vuetify.display.sm ? 'text-center' : ''"

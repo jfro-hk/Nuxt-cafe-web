@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "@mdi/js": "^7.4.47",
     "@nuxtjs/vuetify": "^1.12.3",
     "axios": "^1.6.7",
     "moment": "^2.30.1",

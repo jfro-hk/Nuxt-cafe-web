@@ -317,15 +317,15 @@
   dependencies:
     mime "^3.0.0"
 
-"@esbuild/darwin-x64@0.19.12":
+"@esbuild/win32-x64@0.19.12":
   version "0.19.12"
-  resolved "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.19.12.tgz"
-  integrity sha512-hKoVkKzFiToTgn+41qGhsUJXFlIjxI/jSYeZf3ugemDYZldIXIxhvwN6erJGlX4t5h417iFuheZ7l+YVn05N3A==
+  resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.19.12.tgz"
+  integrity sha512-T1QyPSDCyMXaO3pzBkF96E8xMkiRYbUEZADd29SyPGabqxMViNoii+NcK7eWJAEoU6RZyEm5lVSIjTmcdoB9HA==
 
-"@esbuild/darwin-x64@0.20.0":
+"@esbuild/win32-x64@0.20.0":
   version "0.20.0"
-  resolved "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.20.0.tgz"
-  integrity sha512-bsgTPoyYDnPv8ER0HqnJggXK6RyFy4PH4rtsId0V7Efa90u2+EifxytE9pZnsDgExgkARy24WUQGv9irVbTvIw==
+  resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.20.0.tgz"
+  integrity sha512-NgJnesu1RtWihtTtXGFMU5YSE6JyyHPMxCwBZK7a6/8d31GuSo9l0Ss7w1Jw5QnKUawG6UEehs883kcXf5fYwg==
 
 "@fastify/busboy@^2.0.0":
   version "2.1.0"
@@ -348,6 +348,11 @@
     strip-ansi-cjs "npm:strip-ansi@^6.0.1"
     wrap-ansi "^8.1.0"
     wrap-ansi-cjs "npm:wrap-ansi@^7.0.0"
+
+"@jamescoyle/vue-icon@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/@jamescoyle/vue-icon/-/vue-icon-0.1.2.tgz"
+  integrity sha512-KFrImXx5TKIi6iQXlnyLEBl4rNosNKbTeRnr70ucTdUaciVmd9qK9d/pZAaKt1Ob/8xNnX2GMp8LisyHdKtEgw==
 
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
@@ -420,6 +425,11 @@
   version "7.4.47"
   resolved "https://registry.npmjs.org/@mdi/font/-/font-7.4.47.tgz"
   integrity sha512-43MtGpd585SNzHZPcYowu/84Vz2a2g31TvPMTm9uTiCSWzaheQySUcSyUH/46fPnuPQWof2yd0pGBtzee/IQWw==
+
+"@mdi/js@^7.4.47":
+  version "7.4.47"
+  resolved "https://registry.npmjs.org/@mdi/js/-/js-7.4.47.tgz"
+  integrity sha512-KPnNOtm5i2pMabqZxpUz7iQf+mfrYZyKCZ8QNz85czgEt7cuHcGorWfdzUMWYA0SD+a6Hn4FmJ+YhzzzjkTZrQ==
 
 "@netlify/functions@^2.4.0":
   version "2.5.1"
@@ -729,11 +739,6 @@
     vuetify "^2.6"
     vuetify-loader "^1.7.3"
 
-"@parcel/watcher-darwin-x64@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/@parcel/watcher-darwin-x64/-/watcher-darwin-x64-2.4.0.tgz"
-  integrity sha512-vZMv9jl+szz5YLsSqEGCMSllBl1gU1snfbRL5ysJU03MEa6gkVy9OMcvXV1j4g0++jHEcvzhs3Z3LpeEbVmY6Q==
-
 "@parcel/watcher-wasm@2.4.0":
   version "2.4.0"
   resolved "https://registry.npmjs.org/@parcel/watcher-wasm/-/watcher-wasm-2.4.0.tgz"
@@ -742,6 +747,11 @@
     is-glob "^4.0.3"
     micromatch "^4.0.5"
     napi-wasm "^1.1.0"
+
+"@parcel/watcher-win32-x64@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.npmjs.org/@parcel/watcher-win32-x64/-/watcher-win32-x64-2.4.0.tgz"
+  integrity sha512-pAUyUVjfFjWaf/pShmJpJmNxZhbMvJASUpdes9jL6bTEJ+gDxPRSpXTIemNyNsb9AtbiGXs9XduP1reThmd+dA==
 
 "@parcel/watcher@^2.1.0", "@parcel/watcher@^2.4.0":
   version "2.4.0"
@@ -864,10 +874,10 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
-"@rollup/rollup-darwin-x64@4.9.6":
+"@rollup/rollup-win32-x64-msvc@4.9.6":
   version "4.9.6"
-  resolved "https://registry.npmjs.org/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.9.6.tgz"
-  integrity sha512-zRDtdJuRvA1dc9Mp6BWYqAsU5oeLixdfUvkTHuiYOHwqYuQ4YgSmi6+/lPvSsqc/I0Omw3DdICx4Tfacdzmhog==
+  resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.9.6.tgz"
+  integrity sha512-jqzNLhNDvIZOrt69Ce4UjGRpXJBzhUBzawMwnaDAwyHriki3XollsewxWzOzz+4yOFDkuJHtTsZFwMxhYJWmLQ==
 
 "@sigstore/bundle@^2.1.1":
   version "2.1.1"
@@ -2597,11 +2607,6 @@ fs.realpath@^1.0.0:
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
 
-fsevents@~2.3.2, fsevents@~2.3.3:
-  version "2.3.3"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
-  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
-
 function-bind@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz"
@@ -3403,6 +3408,11 @@ make-fetch-happen@^13.0.0:
     negotiator "^0.6.3"
     promise-retry "^2.0.1"
     ssri "^10.0.0"
+
+material-design-icons-iconfont@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.npmjs.org/material-design-icons-iconfont/-/material-design-icons-iconfont-6.7.0.tgz"
+  integrity sha512-lSj71DgVv20kO0kGbs42icDzbRot61gEDBLQACzkUuznRQBUYmbxzEkGU6dNBb5fRWHMaScYlAXX96HQ4/cJWA==
 
 mdn-data@2.0.28:
   version "2.0.28"
