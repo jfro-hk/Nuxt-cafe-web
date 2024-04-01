@@ -286,6 +286,7 @@ console.log(timeSlots);
             </template>
             <v-col cols="12" v-if="step == 1 && !loading">
               <v-date-picker
+                  class="datepicker-rt"
                   ref="datePicker"
                   :allowed-dates="allowedDates"
                   :min="new Date()"

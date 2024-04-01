@@ -2,7 +2,20 @@
   font-family: "Rufina";
   src: url(../assets/fonts/Rufina-Regular.ttf);
 }
-
+@media (max-width: 450px) {
+  .datepicker-rt{
+  margin-left: -30px;
+  }
+  .v-date-picker.v-sheet{
+    width: 320px !important;
+  }
+  .v-date-picker-month__days{
+    width: 320px !important;
+  }
+  .v-date-picker-month{
+    width: 320px !important;
+  }
+}
 .font {
   /*font-family: "Rufina";*/
   font-family: sans-serif;
